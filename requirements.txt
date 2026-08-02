@@ -1,6 +1,1 @@
 Django==5.2.5
-<<<<<<< HEAD
-pip freeze > requirements.txt
-=======
-pip freeze > requirements.txt
->>>>>>> 5266060ad33c11e5be0eb03eaf8d204091756f11
