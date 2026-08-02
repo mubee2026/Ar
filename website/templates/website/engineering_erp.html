@@ -1,0 +1,17 @@
+{% extends 'website/base.html' %}
+{% block title %}EngiCore ERP | AR Solutions{% endblock %}
+{% block content %}
+<main>
+<section class="page-hero"><div class="container"><span class="eyebrow">ENGICORE ERP</span><h1>One connected platform for engineering operations and financial control.</h1><p class="hero-lead">Designed for engineering, MEP, solar, contracting and technical-service companies.</p><div class="hero-actions"><a class="btn btn-primary" href="{% url 'demo' %}">Request Demo</a><a class="btn btn-outline" href="{% url 'pricing' %}">View Pricing</a></div></div></section>
+<section class="section"><div class="container cards-4">
+<article class="card"><h3>Customers & Suppliers</h3><p>Profiles, balances, statements, invoices, receipts, bills and payments.</p></article>
+<article class="card"><h3>Project Management</h3><p>Budgets, progress, documents, costs and profitability.</p></article>
+<article class="card"><h3>Sales & Invoicing</h3><p>Quotations, line-item invoices, VAT, retention and receipts.</p></article>
+<article class="card"><h3>Purchase Management</h3><p>Purchase orders, receipts, supplier bills and payment tracking.</p></article>
+<article class="card"><h3>Inventory</h3><p>Warehouses, stock movements, transfers and material issues.</p></article>
+<article class="card"><h3>Accounting</h3><p>Chart of accounts, journals, ledgers and financial statements.</p></article>
+<article class="card"><h3>UAE VAT</h3><p>Input VAT, output VAT, TRN details and VAT reports.</p></article>
+<article class="card"><h3>Security & Backup</h3><p>User roles, audit trail, backup and controlled system settings.</p></article>
+</div></section>
+</main>
+{% endblock %}

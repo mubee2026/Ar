@@ -1,0 +1,16 @@
+{% extends 'website/base.html' %}
+{% block title %}Products | AR Solutions{% endblock %}
+{% block content %}
+<main>
+<section class="page-hero"><div class="container"><span class="eyebrow">AR SOLUTIONS PRODUCTS</span><h1>Professional software built around real business workflows.</h1><p class="hero-lead">Manage products from the Django admin panel.</p></div></section>
+<section class="section"><div class="container cards-3">
+{% for product in products %}
+<article class="card"><div class="module-icon">⚙</div><h3>{{ product.name }}</h3><p>{{ product.short_description }}</p>
+{% if product.slug == "engicore-erp" %}<a class="btn-primary" href="{% url 'engineering_erp' %}">Explore Product</a>{% endif %}
+</article>
+{% empty %}
+<article class="card"><h3>EngiCore ERP</h3><p>Add products through Admin → Products.</p><a class="btn-primary" href="{% url 'engineering_erp' %}">Explore Product</a></article>
+{% endfor %}
+</div></section>
+</main>
+{% endblock %}

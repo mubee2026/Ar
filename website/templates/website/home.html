@@ -1,0 +1,156 @@
+{% extends 'website/base.html' %}
+{% block title %}{{ company_settings.company_name }} | Software & IT Solutions{% endblock %}
+{% block meta_description %}Premium websites, software, portfolios and IT solutions from AR Solutions.{% endblock %}
+
+{% block content %}
+<main>
+<section class="ar-hero">
+  <div class="ar-hero-glow"></div>
+
+  <div class="ar-container ar-hero-grid">
+    <div class="ar-hero-copy">
+
+      <h1>
+        Run every project.<br>
+        Control every cost.<br>
+        <span>Grow</span> with confidence.
+      </h1>
+
+      <p>
+        EngiCore ERP connects projects, accounting, purchasing, inventory,
+        customers, suppliers and management reports in one secure platform.
+      </p>
+
+      <div class="ar-hero-actions">
+        <a class="ar-primary-button" href="{% url 'products' %}">Explore Our Solutions <span>→</span></a>
+        <a class="ar-outline-button" href="{% url 'about' %}">Learn More</a>
+      </div>
+    </div>
+
+    <div class="ar-laptop-area">
+      <div class="ar-laptop">
+        <div class="ar-laptop-camera"></div>
+
+        <div class="ar-laptop-screen">
+          <div class="ar-erp-top">
+            <div class="ar-erp-title"><b>AR</b><span>EngiCore ERP</span></div>
+            <span>⌄ &nbsp; ◉</span>
+          </div>
+
+          <div class="ar-erp-body">
+            <aside class="ar-erp-sidebar">
+              <strong>Dashboard</strong>
+              <span>Projects</span>
+              <span>Customers</span>
+              <span>Purchase</span>
+              <span>Inventory</span>
+              <span>Accounting</span>
+              <span>Reports</span>
+              <span>Settings</span>
+            </aside>
+
+            <div class="ar-erp-content">
+              <div class="ar-dashboard-header">
+                <div>
+                  <small>Business Overview</small>
+                  <h3>Executive Dashboard</h3>
+                </div>
+                <button>This Month⌄</button>
+              </div>
+
+              <div class="ar-kpi-grid">
+                <article><small>Total Revenue</small><strong>AED 248K</strong><em>+18.4%</em></article>
+                <article><small>Active Projects</small><strong>18</strong><em>6 closing soon</em></article>
+                <article><small>Receivables</small><strong>AED 72K</strong><em>12 invoices</em></article>
+                <article><small>Net Profit</small><strong>AED 64K</strong><em>+11.6%</em></article>
+              </div>
+
+              <div class="ar-dashboard-panels">
+                <div class="ar-line-panel">
+                  <div class="ar-panel-heading"><span>Revenue & Expense</span><small>6 months</small></div>
+                  <div class="ar-line-chart">
+                    <div class="ar-chart-grid"></div>
+                    <svg viewBox="0 0 600 220" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="goldArea" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#d7a62e" stop-opacity=".30"/>
+                          <stop offset="100%" stop-color="#d7a62e" stop-opacity="0"/>
+                        </linearGradient>
+                      </defs>
+                      <path d="M0 178 C60 153 90 91 145 116 C196 140 226 78 283 100 C337 119 363 52 422 75 C474 96 522 28 600 45 L600 220 L0 220Z" fill="url(#goldArea)"/>
+                      <path d="M0 178 C60 153 90 91 145 116 C196 140 226 78 283 100 C337 119 363 52 422 75 C474 96 522 28 600 45" fill="none" stroke="#e4b63e" stroke-width="6" stroke-linecap="round"/>
+                      <path d="M0 195 C70 175 105 150 160 162 C212 175 251 130 310 146 C367 161 406 109 465 126 C518 140 554 88 600 100" fill="none" stroke="#c7ccd3" stroke-width="4" stroke-dasharray="12 10"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="ar-status-panel">
+                  <div class="ar-panel-heading"><span>Project Status</span><small>18 total</small></div>
+                  <div class="ar-gold-donut"><b>18</b><span>Projects</span></div>
+                  <div class="ar-status-legend">
+                    <span><i class="gold"></i>Completed</span>
+                    <span><i class="silver"></i>In Progress</span>
+                    <span><i class="bronze"></i>On Hold</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ar-laptop-base"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ar-stats-section">
+  <div class="ar-container ar-stats-grid">
+    <article><i>♙</i><div><strong>100+</strong><span>Happy Clients</span></div></article>
+    <article><i>▣</i><div><strong>150+</strong><span>Projects Completed</span></div></article>
+    <article><i>♕</i><div><strong>5+</strong><span>Years Experience</span></div></article>
+    <article><i>◉</i><div><strong>24/7</strong><span>Support</span></div></article>
+  </div>
+</section>
+
+<section class="ar-services-section">
+  <div class="ar-container">
+    <div class="ar-section-heading">
+      <span>What We Do</span>
+      <h2>Powerful Solutions For Your Business</h2>
+      <p>End-to-end digital solutions designed to streamline operations, strengthen your brand and accelerate growth.</p>
+    </div>
+
+    <div class="ar-services-grid">
+      <article class="ar-service-card">
+        <div class="ar-service-icon">◎</div>
+        <h3>Websites</h3>
+        <p>Modern, responsive and high-performance websites that represent your brand and engage customers.</p>
+        <a href="{% url 'contact' %}">Learn More →</a>
+      </article>
+
+      <article class="ar-service-card">
+        <div class="ar-service-icon">&lt;/&gt;</div>
+        <h3>Softwares</h3>
+        <p>Custom software solutions created to automate, simplify and transform your business processes.</p>
+        <a href="{% url 'products' %}">Learn More →</a>
+      </article>
+
+      <article class="ar-service-card">
+        <div class="ar-service-icon">▱</div>
+        <h3>Portfolios</h3>
+        <p>Professional portfolio websites for individuals, freelancers and creative professionals.</p>
+        <a href="{% url 'contact' %}">Learn More →</a>
+      </article>
+
+      <article class="ar-service-card">
+        <div class="ar-service-icon">☁</div>
+        <h3>IT Solutions</h3>
+        <p>Reliable IT services and support to keep your business running smoothly and securely.</p>
+        <a href="{% url 'support' %}">Learn More →</a>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+{% endblock %}

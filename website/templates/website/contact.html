@@ -1,0 +1,89 @@
+{% extends 'website/base.html' %}
+{% block title %}Contact | {{ company_settings.company_name }}{% endblock %}
+{% block content %}
+<main>
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">CONTACT SALES</span>
+    <h1>Let’s discuss your software requirements.</h1>
+    <p class="hero-lead">Contact our sales team or submit the enquiry form.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container cards-3">
+    <article class="card">
+      <h3>Email</h3>
+      {% if company_settings.email %}
+        <p><a href="mailto:{{ company_settings.email }}">{{ company_settings.email }}</a></p>
+      {% else %}
+        <p>Add email in Admin → Company Settings.</p>
+      {% endif %}
+    </article>
+
+    <article class="card">
+      <h3>Phone</h3>
+      {% if company_settings.phone %}
+        <p><a href="tel:{{ company_settings.phone }}">{{ company_settings.phone }}</a></p>
+      {% else %}
+        <p>Add phone in Admin → Company Settings.</p>
+      {% endif %}
+    </article>
+
+    <article class="card">
+      <h3>WhatsApp</h3>
+      {% if company_settings.whatsapp_url %}
+        <p><a class="btn-primary" href="{{ company_settings.whatsapp_url }}" target="_blank" rel="noopener">Open WhatsApp</a></p>
+      {% else %}
+        <p>Add WhatsApp number in Admin → Company Settings.</p>
+      {% endif %}
+    </article>
+  </div>
+</section>
+
+{% if company_settings.address or company_settings.working_hours %}
+<section class="section">
+  <div class="container cards-3">
+    {% if company_settings.address %}
+    <article class="card">
+      <h3>Address</h3>
+      <p>{{ company_settings.address|linebreaksbr }}</p>
+      {% if company_settings.google_maps_url %}
+        <a class="btn-outline" href="{{ company_settings.google_maps_url }}" target="_blank" rel="noopener">Open Map</a>
+      {% endif %}
+    </article>
+    {% endif %}
+
+    {% if company_settings.working_hours %}
+    <article class="card">
+      <h3>Working Hours</h3>
+      <p>{{ company_settings.working_hours }}</p>
+    </article>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<section class="section">
+  <div class="container">
+    <article class="card form-card">
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-grid">
+          {% for field in form %}
+          <div class="{% if field.name == 'message' %}field-full{% endif %}">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}<small style="color:#ff7284">{{ field.errors|striptags }}</small>{% endif %}
+          </div>
+          {% endfor %}
+          <div class="field-full">
+            <button class="btn-primary" type="submit">Send Enquiry</button>
+          </div>
+        </div>
+      </form>
+    </article>
+  </div>
+</section>
+</main>
+{% endblock %}

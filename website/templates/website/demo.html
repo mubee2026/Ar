@@ -1,0 +1,20 @@
+{% extends 'website/base.html' %}
+{% block title %}Request Demo | AR Solutions{% endblock %}
+{% block content %}
+<main>
+<section class="page-hero"><div class="container"><span class="eyebrow">REQUEST DEMO</span><h1>See EngiCore ERP with your company workflow.</h1><p class="hero-lead">The request is saved in the database and shown in the admin panel.</p></div></section>
+<section class="section"><div class="container"><article class="card form-card">
+<form method="post">{% csrf_token %}
+<div class="form-grid">
+{% for field in form %}
+<div class="{% if field.name == 'requirements' %}field-full{% endif %}">
+<label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}
+{% if field.errors %}<small style="color:#ff7284">{{ field.errors|striptags }}</small>{% endif %}
+</div>
+{% endfor %}
+<div class="field-full"><button class="btn-primary" type="submit">Submit Demo Request</button></div>
+</div>
+</form>
+</article></div></section>
+</main>
+{% endblock %}

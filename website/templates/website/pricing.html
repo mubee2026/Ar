@@ -1,0 +1,18 @@
+{% extends 'website/base.html' %}
+{% block title %}Pricing | AR Solutions{% endblock %}
+{% block content %}
+<main>
+<section class="page-hero"><div class="container"><span class="eyebrow">FLEXIBLE PRICING</span><h1>Choose the package that matches your company.</h1><p class="hero-lead">Manage plans from the Django admin panel.</p></div></section>
+<section class="section"><div class="container pricing-grid">
+{% for plan in plans %}
+<article class="card price-card {% if plan.is_featured %}featured{% endif %}">
+<h3>{{ plan.name }}</h3><p>{{ plan.subtitle }}</p><div class="price">{{ plan.price_label }}</div>
+<ul class="feature-list">{% for feature in plan.feature_list %}<li>{{ feature }}</li>{% endfor %}</ul>
+<a class="{% if plan.is_featured %}btn-primary{% else %}btn-outline{% endif %}" href="{% url 'demo' %}">Request Demo</a>
+</article>
+{% empty %}
+<article class="card price-card featured"><h3>Professional</h3><p>Add pricing plans through Admin → Pricing Plans.</p><div class="price">Custom</div><a class="btn-primary" href="{% url 'demo' %}">Request Demo</a></article>
+{% endfor %}
+</div></section>
+</main>
+{% endblock %}
