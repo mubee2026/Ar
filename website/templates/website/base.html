@@ -384,89 +384,192 @@
   {% block content %}{% endblock %}
 
 
-  <footer class="ar-footer">
+  <footer class="ar-footer ar-footer-v1">
+  <div class="ar-container ar-footer-main">
 
-    <div class="ar-container ar-footer-grid">
+    <div class="ar-footer-brand-column">
+      <a class="ar-footer-brand" href="{% url 'home' %}">
+        <span class="ar-footer-logo">AR</span>
 
-      <div>
-        <h3>{{ company_settings.company_name }}</h3>
+        <span>
+          <strong>{{ company_settings.company_name|default:"AR Solutions" }}</strong>
+          <small>INNOVATE • DEVELOP • DELIVER</small>
+        </span>
+      </a>
 
-        <p>{{ company_settings.tagline }}</p>
+      <p>
+        Complete digital solutions for businesses and professionals,
+        including websites, portfolio websites, custom software,
+        career services and IT support.
+      </p>
 
-        {% if company_settings.address %}
-        <p>{{ company_settings.address }}</p>
-        {% endif %}
-      </div>
-
-
-      <div>
-        <h4>Solutions</h4>
-
-        <a href="{% url 'products' %}">
-          Software Products
-        </a>
-
-        <a href="{% url 'engineering_erp' %}">
-          EngiCore ERP
-        </a>
-
-        <a href="{% url 'pricing' %}">
-          Pricing
-        </a>
-      </div>
-
-
-      <div>
-        <h4>Company</h4>
-
-        <a href="{% url 'about' %}">
-          About Us
-        </a>
-
-        <a href="{% url 'support' %}">
-          Support
-        </a>
-
-        <a href="{% url 'contact' %}">
-          Contact
-        </a>
-      </div>
-
-
-      <div>
-        <h4>Contact</h4>
-
-        {% if company_settings.email %}
-        <a href="mailto:{{ company_settings.email }}">
-          {{ company_settings.email }}
-        </a>
-        {% endif %}
-
-        {% if company_settings.phone %}
-        <a href="tel:{{ company_settings.phone }}">
-          {{ company_settings.phone }}
-        </a>
-        {% endif %}
-
+      <div class="ar-footer-socials">
         {% if company_settings.whatsapp_url %}
         <a
           href="{{ company_settings.whatsapp_url }}"
           target="_blank"
           rel="noopener"
-        >
-          WhatsApp
-        </a>
+          aria-label="WhatsApp"
+          title="WhatsApp"
+        >WA</a>
+        {% endif %}
+
+        {% if company_settings.facebook_url %}
+        <a
+          href="{{ company_settings.facebook_url }}"
+          target="_blank"
+          rel="noopener"
+          aria-label="Facebook"
+          title="Facebook"
+        >f</a>
+        {% endif %}
+
+        {% if company_settings.instagram_url %}
+        <a
+          href="{{ company_settings.instagram_url }}"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+          title="Instagram"
+        >IG</a>
+        {% endif %}
+
+        {% if company_settings.linkedin_url %}
+        <a
+          href="{{ company_settings.linkedin_url }}"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+          title="LinkedIn"
+        >in</a>
+        {% endif %}
+
+        {% if company_settings.youtube_url %}
+        <a
+          href="{{ company_settings.youtube_url }}"
+          target="_blank"
+          rel="noopener"
+          aria-label="YouTube"
+          title="YouTube"
+        >▶</a>
         {% endif %}
       </div>
-
     </div>
 
 
-    <div class="ar-container ar-footer-bottom">
-      © {% now "Y" %} {{ company_settings.copyright_text }}
+    <div class="ar-footer-column">
+      <h4>Services</h4>
+
+      <a href="{% url 'products' %}#website-development">
+        Website Development
+      </a>
+
+      <a href="{% url 'products' %}#portfolio-websites">
+        Portfolio Websites
+      </a>
+
+      <a href="{% url 'products' %}#software-development">
+        Software Development
+      </a>
+
+      <a href="{% url 'products' %}#career-services">
+        CV & Cover Letter
+      </a>
+
+      <a href="{% url 'support' %}">
+        IT Solutions
+      </a>
     </div>
 
-  </footer>
+
+    <div class="ar-footer-column">
+      <h4>Software</h4>
+
+      <a href="{% url 'engineering_erp' %}">
+        EngiCore ERP
+      </a>
+
+      <a href="{% url 'products' %}">
+        Project Management
+      </a>
+
+      <a href="{% url 'products' %}">
+        Accounting Software
+      </a>
+
+      <a href="{% url 'products' %}">
+        Sales & Inventory
+      </a>
+
+      <a href="{% url 'contact' %}">
+        Custom Software
+      </a>
+    </div>
+
+
+    <div class="ar-footer-column">
+      <h4>Company</h4>
+
+      <a href="{% url 'about' %}">About Us</a>
+      <a href="{% url 'pricing' %}">Pricing</a>
+      <a href="{% url 'support' %}">Support</a>
+      <a href="{% url 'contact' %}">Contact Us</a>
+      <a href="{% url 'demo' %}">Request Demo</a>
+    </div>
+
+
+    <div class="ar-footer-column ar-footer-contact">
+      <h4>Contact</h4>
+
+      {% if company_settings.email %}
+      <a href="mailto:{{ company_settings.email }}">
+        {{ company_settings.email }}
+      </a>
+      {% endif %}
+
+      {% if company_settings.phone %}
+      <a href="tel:{{ company_settings.phone }}">
+        {{ company_settings.phone }}
+      </a>
+      {% endif %}
+
+      {% if company_settings.address %}
+      <p>{{ company_settings.address|linebreaksbr }}</p>
+      {% else %}
+      <p>United Arab Emirates</p>
+      {% endif %}
+
+      {% if company_settings.working_hours %}
+      <small>{{ company_settings.working_hours|linebreaksbr }}</small>
+      {% endif %}
+    </div>
+
+  </div>
+
+
+  <div class="ar-container ar-footer-legal">
+    <p>
+      © {% now "Y" %}
+      {{ company_settings.copyright_text|default:"AR Solutions. All rights reserved." }}
+    </p>
+
+    <nav aria-label="Legal links">
+      <a href="{% url 'privacy' %}">Privacy Policy</a>
+      <a href="{% url 'terms' %}">Terms & Conditions</a>
+      <a href="{% url 'refund' %}">Refund Policy</a>
+      <a href="/sitemap.xml">Sitemap</a>
+    </nav>
+  </div>
+</footer>
+
+<button
+  type="button"
+  class="ar-back-to-top"
+  aria-label="Back to top"
+  title="Back to top"
+>
+  ↑
+</button>
 
 
   <script src="{% static 'website/js/main.js' %}"></script>

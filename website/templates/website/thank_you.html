@@ -1,0 +1,139 @@
+{% extends 'website/base.html' %}
+
+{% block title %}
+{{ submission.title }} | AR Solutions
+{% endblock %}
+
+{% block meta_description %}
+Your request has been submitted successfully to AR Solutions.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-thank-page {
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    padding: 90px 0;
+    background:
+      radial-gradient(
+        circle at 50% 20%,
+        rgba(218, 172, 48, 0.13),
+        transparent 38%
+      ),
+      #070707;
+  }
+
+  .ar-thank-card {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 55px 36px;
+    text-align: center;
+    border: 1px solid rgba(218, 172, 48, 0.28);
+    border-radius: 25px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.014)
+      );
+    box-shadow: 0 30px 75px rgba(0, 0, 0, 0.38);
+  }
+
+  .ar-thank-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 82px;
+    height: 82px;
+    margin-bottom: 26px;
+    border: 1px solid rgba(218, 172, 48, 0.5);
+    border-radius: 50%;
+    color: #e2b43d;
+    background: rgba(218, 172, 48, 0.09);
+    font-size: 39px;
+    font-weight: 800;
+  }
+
+  .ar-thank-card h1 {
+    margin: 0 0 16px;
+    color: #ffffff;
+    font-size: clamp(34px, 5vw, 55px);
+  }
+
+  .ar-thank-card p {
+    max-width: 610px;
+    margin: 0 auto 18px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .ar-thank-note {
+    padding: 14px 18px;
+    margin: 25px 0 30px;
+    border: 1px solid rgba(218, 172, 48, 0.15);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.62);
+    background: rgba(255, 255, 255, 0.024);
+  }
+
+  .ar-thank-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .ar-thank-page {
+      padding: 60px 0;
+    }
+
+    .ar-thank-card {
+      padding: 42px 20px;
+    }
+
+    .ar-thank-actions {
+      flex-direction: column;
+    }
+
+    .ar-thank-actions a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="ar-thank-page">
+  <div class="ar-container">
+
+    <section class="ar-thank-card">
+      <div class="ar-thank-icon">✓</div>
+
+      <h1>{{ submission.title }}</h1>
+
+      <p>{{ submission.message }}</p>
+
+      <div class="ar-thank-note">
+        Your details have been stored in our enquiry system.
+        AR Solutions will review your request and respond using the
+        contact information you provided.
+      </div>
+
+      <div class="ar-thank-actions">
+        <a class="ar-primary-button" href="{% url 'home' %}">
+          Return to Home <span>→</span>
+        </a>
+
+        <a class="ar-outline-button" href="{% url 'products' %}">
+          Explore Products & Services
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+{% endblock %}

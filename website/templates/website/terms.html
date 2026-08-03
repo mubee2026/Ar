@@ -1,5 +1,498 @@
 {% extends 'website/base.html' %}
-{% block title %}Terms & Conditions | AR Solutions{% endblock %}
+
+{% block title %}
+Terms & Conditions | AR Solutions
+{% endblock %}
+
+{% block meta_description %}
+Read the terms governing use of the AR Solutions website and the provision of websites, portfolios, software, CV writing and IT services.
+{% endblock %}
+
+{% block og_title %}
+Terms & Conditions | AR Solutions
+{% endblock %}
+
+{% block og_description %}
+Terms governing AR Solutions website use, quotations, payments, project delivery, software licensing, support and customer responsibilities.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-legal-page {
+    background: #070707;
+    color: #ffffff;
+  }
+
+  .ar-legal-hero {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid rgba(218, 172, 48, 0.16);
+    background:
+      radial-gradient(circle at 82% 18%, rgba(218,172,48,.13), transparent 34%),
+      linear-gradient(180deg, #090909, #050505);
+  }
+
+  .ar-legal-eyebrow {
+    display: inline-block;
+    margin-bottom: 17px;
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+  }
+
+  .ar-legal-hero h1 {
+    margin: 0 0 20px;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.06;
+  }
+
+  .ar-legal-hero p {
+    max-width: 790px;
+    margin: 0;
+    color: rgba(255,255,255,.67);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .ar-legal-section {
+    padding: 80px 0;
+  }
+
+  .ar-legal-content {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid rgba(218,172,48,.2);
+    border-radius: 22px;
+    background: linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+  }
+
+  .ar-legal-content section {
+    padding-bottom: 31px;
+    margin-bottom: 31px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .ar-legal-content section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .ar-legal-content h2 {
+    margin: 0 0 15px;
+    font-size: 25px;
+  }
+
+  .ar-legal-content p,
+  .ar-legal-content li {
+    color: rgba(255,255,255,.67);
+    line-height: 1.82;
+  }
+
+  .ar-legal-content ul {
+    display: grid;
+    gap: 8px;
+    padding-left: 22px;
+  }
+
+  .ar-legal-highlight {
+    padding: 18px;
+    margin-bottom: 28px;
+    border-left: 3px solid #d9aa35;
+    border-radius: 10px;
+    background: rgba(218,172,48,.07);
+    color: rgba(255,255,255,.76);
+    line-height: 1.72;
+  }
+
+  .ar-legal-date {
+    margin-top: 18px;
+    color: rgba(255,255,255,.47);
+    font-size: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .ar-legal-hero {
+      padding: 72px 0 54px;
+    }
+
+    .ar-legal-section {
+      padding: 58px 0;
+    }
+
+    .ar-legal-content {
+      padding: 24px;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<main><section class="page-hero"><div class="container"><h1>Terms & Conditions</h1></div></section><section class="section"><div class="container"><article class="card form-card"><p>Add AR Solutions software licensing, payment, implementation, support, warranty and liability terms before accepting customer orders.</p></article></div></section></main>
+<main class="ar-legal-page">
+
+  <section class="ar-legal-hero">
+    <div class="ar-container">
+      <span class="ar-legal-eyebrow">Website & Service Terms</span>
+
+      <h1>Terms & Conditions</h1>
+
+      <p>
+        These Terms govern use of this website and services provided by
+        AR Solutions. A written quotation, proposal or agreement may contain
+        additional project-specific terms.
+      </p>
+
+      <div class="ar-legal-date">
+        Last updated: {% now "F Y" %}
+      </div>
+    </div>
+  </section>
+
+
+  <section class="ar-legal-section">
+    <div class="ar-container">
+
+      <article class="ar-legal-content">
+
+        <div class="ar-legal-highlight">
+          Do not make payment or place an order until the project scope,
+          deliverables, price, timeline and payment terms have been confirmed
+          in writing.
+        </div>
+
+
+        <section>
+          <h2>1. Acceptance of Terms</h2>
+
+          <p>
+            By using this website, submitting an enquiry, approving a
+            quotation or purchasing a service, you agree to these Terms and
+            any project-specific written agreement.
+          </p>
+
+          <p>
+            If you do not accept these Terms, you should not use the website
+            or order services.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>2. Services</h2>
+
+          <p>AR Solutions may provide services including:</p>
+
+          <ul>
+            <li>Website development and redesign.</li>
+            <li>Portfolio and company-profile websites.</li>
+            <li>Custom software and ERP development.</li>
+            <li>Project, accounting, sales and management systems.</li>
+            <li>CV, resume and cover-letter writing.</li>
+            <li>IT consultation, maintenance and technical support.</li>
+          </ul>
+
+          <p>
+            Availability, features and deliverables depend on the accepted
+            quotation or agreement.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>3. Quotations and Project Scope</h2>
+
+          <p>
+            Quotations are based on the information available at the time they
+            are prepared. A quotation may specify pages, modules, features,
+            revision limits, content requirements, delivery stages and support
+            terms.
+          </p>
+
+          <p>
+            Any feature, page, module, integration, design revision or service
+            not included in the approved scope may require additional time and
+            charges.
+          </p>
+
+          <p>
+            Unless stated otherwise, a quotation may expire after the validity
+            period shown in the quotation.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>4. Customer Responsibilities</h2>
+
+          <p>The customer is responsible for:</p>
+
+          <ul>
+            <li>Providing accurate requirements and instructions.</li>
+            <li>
+              Supplying content, logos, images, documents and approvals on
+              time.
+            </li>
+            <li>
+              Confirming that supplied materials can legally be used.
+            </li>
+            <li>Reviewing work and providing clear feedback.</li>
+            <li>Protecting login credentials and account access.</li>
+            <li>Maintaining lawful use of websites and software.</li>
+            <li>Making agreed payments by the due dates.</li>
+          </ul>
+
+          <p>
+            Delays in supplying content, access or approvals may extend the
+            project timeline.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>5. Payment Terms</h2>
+
+          <p>
+            Payment stages will be stated in the quotation, invoice or written
+            agreement. Projects may require an advance payment before work
+            begins.
+          </p>
+
+          <p>
+            Work may be paused when payments are overdue. Final files,
+            deployment, ownership transfer or production access may be withheld
+            until all applicable amounts are paid.
+          </p>
+
+          <p>
+            Bank charges, platform fees, taxes or third-party charges may be
+            payable by the customer where stated.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>6. Project Timelines</h2>
+
+          <p>
+            Estimated timelines are based on the agreed scope and timely
+            customer cooperation. Timelines may change due to:
+          </p>
+
+          <ul>
+            <li>Delayed content, feedback or approval.</li>
+            <li>Scope changes or additional revisions.</li>
+            <li>Third-party service or integration delays.</li>
+            <li>Technical issues outside reasonable control.</li>
+            <li>Events beyond reasonable control.</li>
+          </ul>
+
+          <p>
+            A delivery estimate is not an absolute guarantee unless expressly
+            stated in a signed agreement.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>7. Revisions and Change Requests</h2>
+
+          <p>
+            Included revisions will be specified in the quotation or
+            agreement. Revisions must remain within the approved project
+            scope.
+          </p>
+
+          <p>
+            Major redesigns, new requirements, additional modules, additional
+            pages or repeated changes after approval may be treated as
+            chargeable change requests.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>8. Software Licensing and Access</h2>
+
+          <p>
+            Custom or commercial software may be supplied under a licence
+            rather than an unrestricted transfer of all underlying source
+            code and intellectual property.
+          </p>
+
+          <p>
+            The applicable licence, permitted users, installations,
+            modification rights, hosting rights and source-code terms will be
+            specified in the relevant quotation or agreement.
+          </p>
+
+          <p>
+            The customer must not unlawfully copy, resell, sublicense, reverse
+            engineer, distribute or provide unauthorised access to licensed
+            software.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>9. Intellectual Property</h2>
+
+          <p>
+            Pre-existing frameworks, reusable components, libraries, methods,
+            templates, development tools and general technical knowledge remain
+            the property of their respective owners.
+          </p>
+
+          <p>
+            Ownership or usage rights for custom deliverables will follow the
+            accepted quotation or written agreement and may become effective
+            only after full payment.
+          </p>
+
+          <p>
+            Third-party fonts, images, plugins, libraries and services remain
+            subject to their own licences.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>10. Content and CV Services</h2>
+
+          <p>
+            Customers are responsible for confirming that personal,
+            employment, education and project information supplied for CVs,
+            portfolios and websites is true and accurate.
+          </p>
+
+          <p>
+            AR Solutions does not guarantee employment, interview selection,
+            sales, rankings, customer enquiries or other specific results.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>11. Hosting and Third-Party Services</h2>
+
+          <p>
+            Projects may rely on hosting providers, domain registrars, email
+            providers, APIs, payment services, plugins or cloud platforms.
+          </p>
+
+          <p>
+            Third-party prices, availability, policies and functionality may
+            change without AR Solutions’ control. Third-party fees are not
+            included unless expressly stated.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>12. Support and Maintenance</h2>
+
+          <p>
+            Support included with a project will be limited to the period and
+            scope stated in the agreement.
+          </p>
+
+          <p>
+            New features, content changes, maintenance, user training,
+            third-party updates and issues caused by unauthorised changes may
+            require a separate quotation.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>13. Warranties and Limitations</h2>
+
+          <p>
+            Services will be provided with reasonable care based on the agreed
+            scope. However, uninterrupted operation, compatibility with every
+            future technology or achievement of specific commercial results
+            cannot be guaranteed.
+          </p>
+
+          <p>
+            To the maximum extent permitted by applicable law, AR Solutions
+            will not be responsible for indirect, incidental or consequential
+            losses, loss of profits, loss of opportunity or loss caused by
+            third-party services, customer misuse or unauthorised changes.
+          </p>
+
+          <p>
+            Any liability will be subject to applicable law and the relevant
+            written agreement.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>14. Suspension or Termination</h2>
+
+          <p>
+            Services may be suspended or terminated for non-payment,
+            unlawful use, abusive conduct, security risks, material breach or
+            failure to provide required cooperation.
+          </p>
+
+          <p>
+            Outstanding charges for completed work and committed third-party
+            expenses remain payable.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>15. Governing Law and Disputes</h2>
+
+          <p>
+            The parties should first attempt to resolve disagreements through
+            good-faith communication.
+          </p>
+
+          <p>
+            Applicable law and jurisdiction will be determined by the
+            registered business location and the relevant written contract
+            once AR Solutions is formally licensed.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>16. Changes to These Terms</h2>
+
+          <p>
+            These Terms may be updated as services, legal requirements or
+            business practices change. Updated Terms will apply from the date
+            published, except where an existing signed agreement provides
+            otherwise.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>17. Contact</h2>
+
+          <p>
+            Questions about these Terms may be submitted through the Contact
+            page.
+          </p>
+
+          <a class="ar-primary-button" href="{% url 'contact' %}">
+            Contact AR Solutions <span>→</span>
+          </a>
+        </section>
+
+      </article>
+    </div>
+  </section>
+
+</main>
 {% endblock %}

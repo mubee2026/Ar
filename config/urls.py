@@ -4,6 +4,7 @@ from django.urls import include, path
 from django.views.generic import RedirectView, TemplateView
 
 from website.sitemaps import StaticViewSitemap
+handler404 = "website.views.custom_404"
 
 sitemaps = {
     "static": StaticViewSitemap,

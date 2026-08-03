@@ -1,18 +1,619 @@
 {% extends 'website/base.html' %}
-{% block title %}Pricing | AR Solutions{% endblock %}
+
+{% block title %}
+Pricing | Websites, Portfolios, Software, CV Writing & IT Solutions | AR Solutions
+{% endblock %}
+
+{% block meta_description %}
+View flexible pricing for website development, portfolio websites, custom software, CV and cover letter writing, and IT solutions from AR Solutions.
+{% endblock %}
+
+{% block og_title %}
+AR Solutions Pricing | Flexible Digital Solutions
+{% endblock %}
+
+{% block og_description %}
+Explore flexible pricing options for websites, portfolio websites, software development, career services and IT solutions.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-pricing-page {
+    background: #070707;
+    color: #ffffff;
+  }
+
+  .ar-pricing-hero {
+    padding: 100px 0 78px;
+    border-bottom: 1px solid rgba(218, 172, 48, 0.16);
+    background:
+      radial-gradient(
+        circle at 82% 18%,
+        rgba(218, 172, 48, 0.13),
+        transparent 34%
+      ),
+      linear-gradient(180deg, #090909, #050505);
+  }
+
+  .ar-pricing-hero-content {
+    max-width: 900px;
+  }
+
+  .ar-pricing-eyebrow {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .ar-pricing-hero h1 {
+    margin: 0 0 22px;
+    font-size: clamp(42px, 6vw, 74px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .ar-pricing-hero h1 span {
+    color: #d9aa35;
+  }
+
+  .ar-pricing-hero p {
+    max-width: 780px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .ar-pricing-section {
+    padding: 90px 0;
+  }
+
+  .ar-pricing-heading {
+    max-width: 800px;
+    margin-bottom: 42px;
+  }
+
+  .ar-pricing-heading span {
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .ar-pricing-heading h2 {
+    margin: 14px 0 14px;
+    font-size: clamp(31px, 4vw, 48px);
+    line-height: 1.15;
+  }
+
+  .ar-pricing-heading p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.75;
+  }
+
+  .ar-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .ar-pricing-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: 1px solid rgba(218, 172, 48, 0.2);
+    border-radius: 22px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.012)
+      );
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .ar-pricing-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(229, 184, 61, 0.48);
+    box-shadow: 0 22px 58px rgba(0, 0, 0, 0.38);
+  }
+
+  .ar-pricing-card.featured {
+    border-color: rgba(229, 184, 61, 0.5);
+    background:
+      radial-gradient(
+        circle at 85% 10%,
+        rgba(218, 172, 48, 0.15),
+        transparent 36%
+      ),
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.014)
+      );
+  }
+
+  .ar-pricing-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 7px 10px;
+    border: 1px solid rgba(218, 172, 48, 0.3);
+    border-radius: 999px;
+    color: #e4b73d;
+    background: rgba(218, 172, 48, 0.08);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ar-pricing-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 22px;
+    border: 1px solid rgba(218, 172, 48, 0.34);
+    border-radius: 16px;
+    color: #e1b33b;
+    background: rgba(218, 172, 48, 0.08);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .ar-pricing-card h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+  }
+
+  .ar-pricing-card > p {
+    margin: 0 0 18px;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.7;
+  }
+
+  .ar-price {
+    margin-bottom: 20px;
+    color: #e2b43d;
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  .ar-price small {
+    display: block;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.46);
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .ar-pricing-features {
+    display: grid;
+    gap: 10px;
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ar-pricing-features li {
+    position: relative;
+    padding-left: 21px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.55;
+  }
+
+  .ar-pricing-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #d9aa35;
+    font-weight: 700;
+  }
+
+  .ar-pricing-actions {
+    margin-top: auto;
+  }
+
+  .ar-pricing-note-section {
+    padding: 90px 0;
+    border-top: 1px solid rgba(218, 172, 48, 0.12);
+    background:
+      radial-gradient(
+        circle at 15% 40%,
+        rgba(218, 172, 48, 0.08),
+        transparent 30%
+      ),
+      #080808;
+  }
+
+  .ar-pricing-note {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .ar-pricing-note h2 {
+    margin: 12px 0 18px;
+    font-size: clamp(33px, 5vw, 54px);
+    line-height: 1.12;
+  }
+
+  .ar-pricing-note p {
+    margin: 0 0 27px;
+    color: rgba(255, 255, 255, 0.66);
+    line-height: 1.8;
+  }
+
+  .ar-pricing-note-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .ar-pricing-note-list span {
+    padding: 14px 16px;
+    border: 1px solid rgba(218, 172, 48, 0.16);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.76);
+    background: rgba(255, 255, 255, 0.022);
+  }
+
+  .ar-pricing-cta-section {
+    padding: 85px 0;
+  }
+
+  .ar-pricing-cta {
+    padding: 55px 35px;
+    text-align: center;
+    border: 1px solid rgba(218, 172, 48, 0.27);
+    border-radius: 24px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(218, 172, 48, 0.12),
+        rgba(255, 255, 255, 0.02)
+      );
+  }
+
+  .ar-pricing-cta h2 {
+    margin: 0 0 15px;
+    font-size: clamp(31px, 4vw, 50px);
+  }
+
+  .ar-pricing-cta p {
+    max-width: 760px;
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, 0.67);
+    line-height: 1.75;
+  }
+
+  .ar-pricing-cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  @media (max-width: 1050px) {
+    .ar-pricing-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .ar-pricing-hero {
+      padding: 78px 0 60px;
+    }
+
+    .ar-pricing-section,
+    .ar-pricing-note-section,
+    .ar-pricing-cta-section {
+      padding: 62px 0;
+    }
+
+    .ar-pricing-grid,
+    .ar-pricing-note {
+      grid-template-columns: 1fr;
+    }
+
+    .ar-pricing-note-list {
+      grid-template-columns: 1fr;
+    }
+
+    .ar-pricing-cta {
+      padding: 40px 20px;
+    }
+
+    .ar-pricing-cta-actions {
+      flex-direction: column;
+    }
+
+    .ar-pricing-cta-actions a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<main>
-<section class="page-hero"><div class="container"><span class="eyebrow">FLEXIBLE PRICING</span><h1>Choose the package that matches your company.</h1><p class="hero-lead">Manage plans from the Django admin panel.</p></div></section>
-<section class="section"><div class="container pricing-grid">
-{% for plan in plans %}
-<article class="card price-card {% if plan.is_featured %}featured{% endif %}">
-<h3>{{ plan.name }}</h3><p>{{ plan.subtitle }}</p><div class="price">{{ plan.price_label }}</div>
-<ul class="feature-list">{% for feature in plan.feature_list %}<li>{{ feature }}</li>{% endfor %}</ul>
-<a class="{% if plan.is_featured %}btn-primary{% else %}btn-outline{% endif %}" href="{% url 'demo' %}">Request Demo</a>
-</article>
-{% empty %}
-<article class="card price-card featured"><h3>Professional</h3><p>Add pricing plans through Admin → Pricing Plans.</p><div class="price">Custom</div><a class="btn-primary" href="{% url 'demo' %}">Request Demo</a></article>
-{% endfor %}
-</div></section>
+<main class="ar-pricing-page">
+
+  <section class="ar-pricing-hero">
+    <div class="ar-container">
+
+      <div class="ar-pricing-hero-content">
+        <span class="ar-pricing-eyebrow">
+          Flexible Pricing
+        </span>
+
+        <h1>
+          Choose a solution that matches
+          <span>your exact requirement.</span>
+        </h1>
+
+        <p>
+          Pricing depends on the scope, design, features, content and level of
+          customisation. The options below show the main service categories.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="ar-pricing-section">
+    <div class="ar-container">
+
+      <div class="ar-pricing-heading">
+        <span>Service Categories</span>
+
+        <h2>
+          Flexible Options for Different Needs
+        </h2>
+
+        <p>
+          Final quotations are prepared after understanding your exact
+          requirements.
+        </p>
+      </div>
+
+      <div class="ar-pricing-grid">
+
+        <article class="ar-pricing-card">
+          <div class="ar-pricing-icon">WEB</div>
+
+          <h3>Website Development</h3>
+
+          <p>
+            Professional websites for businesses, companies, shops and
+            service providers.
+          </p>
+
+          <div class="ar-price">
+            Custom Quote
+            <small>Based on pages, design and features</small>
+          </div>
+
+          <ul class="ar-pricing-features">
+            <li>Responsive design</li>
+            <li>Business or corporate website</li>
+            <li>Contact and enquiry forms</li>
+            <li>Basic SEO setup</li>
+            <li>Admin features if required</li>
+          </ul>
+
+          <div class="ar-pricing-actions">
+            <a class="ar-primary-button" href="{% url 'contact' %}">
+              Request Website Quote <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="ar-pricing-card">
+          <div class="ar-pricing-icon">PORT</div>
+
+          <h3>Portfolio Websites</h3>
+
+          <p>
+            Professional portfolios for individuals, freelancers, companies
+            and technical professionals.
+          </p>
+
+          <div class="ar-price">
+            Custom Quote
+            <small>Based on sections and content</small>
+          </div>
+
+          <ul class="ar-pricing-features">
+            <li>Personal or company portfolio</li>
+            <li>Project showcase</li>
+            <li>Skills and experience sections</li>
+            <li>Mobile responsive design</li>
+            <li>Contact and download options</li>
+          </ul>
+
+          <div class="ar-pricing-actions">
+            <a class="ar-primary-button" href="{% url 'contact' %}">
+              Request Portfolio Quote <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="ar-pricing-card featured">
+          <span class="ar-pricing-badge">
+            Custom Development
+          </span>
+
+          <div class="ar-pricing-icon">DEV</div>
+
+          <h3>Software Development</h3>
+
+          <p>
+            ERP, accounting, project management, sales, inventory and custom
+            business software.
+          </p>
+
+          <div class="ar-price">
+            Custom Quote
+            <small>Based on modules and users</small>
+          </div>
+
+          <ul class="ar-pricing-features">
+            <li>Requirement analysis</li>
+            <li>Custom modules and workflows</li>
+            <li>User roles and permissions</li>
+            <li>Reports and printable documents</li>
+            <li>Deployment and support</li>
+          </ul>
+
+          <div class="ar-pricing-actions">
+            <a class="ar-primary-button" href="{% url 'demo' %}">
+              Request Software Demo <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="ar-pricing-card">
+          <div class="ar-pricing-icon">CV</div>
+
+          <h3>CV & Career Services</h3>
+
+          <p>
+            Professional CVs, cover letters and career documents for different
+            industries and job roles.
+          </p>
+
+          <div class="ar-price">
+            Custom Quote
+            <small>Based on service and experience level</small>
+          </div>
+
+          <ul class="ar-pricing-features">
+            <li>ATS-friendly CV</li>
+            <li>Professional resume writing</li>
+            <li>Cover letter writing</li>
+            <li>Job-specific customisation</li>
+            <li>CV redesign and formatting</li>
+          </ul>
+
+          <div class="ar-pricing-actions">
+            <a class="ar-primary-button" href="{% url 'contact' %}">
+              Request Career Service <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="ar-pricing-card">
+          <div class="ar-pricing-icon">IT</div>
+
+          <h3>IT Solutions</h3>
+
+          <p>
+            Technical support, business automation, website maintenance and
+            digital consulting.
+          </p>
+
+          <div class="ar-price">
+            Custom Quote
+            <small>One-time or ongoing support</small>
+          </div>
+
+          <ul class="ar-pricing-features">
+            <li>Technical support</li>
+            <li>Website maintenance</li>
+            <li>Software support</li>
+            <li>Business automation</li>
+            <li>Digital consulting</li>
+          </ul>
+
+          <div class="ar-pricing-actions">
+            <a class="ar-primary-button" href="{% url 'support' %}">
+              Discuss IT Support <span>→</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="ar-pricing-note-section">
+    <div class="ar-container ar-pricing-note">
+
+      <div>
+        <span class="ar-pricing-eyebrow">
+          Transparent Quotation
+        </span>
+
+        <h2>
+          Pricing Is Based on Scope, Not Guesswork
+        </h2>
+
+        <p>
+          Before preparing a quotation, we review the required pages,
+          features, modules, content, design level, timeline and support
+          requirements. This helps ensure that the quotation matches the
+          actual work.
+        </p>
+
+        <a class="ar-primary-button" href="{% url 'contact' %}">
+          Request a Detailed Quote <span>→</span>
+        </a>
+      </div>
+
+      <div class="ar-pricing-note-list">
+        <span>Clear Project Scope</span>
+        <span>Custom Requirements</span>
+        <span>Flexible Packages</span>
+        <span>Optional Add-ons</span>
+        <span>One-time Projects</span>
+        <span>Ongoing Support</span>
+        <span>Business Solutions</span>
+        <span>Professional Services</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="ar-pricing-cta-section">
+    <div class="ar-container">
+
+      <div class="ar-pricing-cta">
+        <h2>
+          Tell Us What You Need
+        </h2>
+
+        <p>
+          Share your requirement and expected result. We will review it and
+          suggest the most suitable service, approach and quotation.
+        </p>
+
+        <div class="ar-pricing-cta-actions">
+          <a class="ar-primary-button" href="{% url 'contact' %}">
+            Get a Free Consultation <span>→</span>
+          </a>
+
+          <a class="ar-outline-button" href="{% url 'products' %}">
+            View Products & Services
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 {% endblock %}

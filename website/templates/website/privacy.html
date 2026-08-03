@@ -1,5 +1,474 @@
 {% extends 'website/base.html' %}
-{% block title %}Privacy Policy | AR Solutions{% endblock %}
+
+{% block title %}
+Privacy Policy | AR Solutions
+{% endblock %}
+
+{% block meta_description %}
+Read how AR Solutions collects, uses, stores and protects information submitted through its website, enquiry forms and digital services.
+{% endblock %}
+
+{% block og_title %}
+Privacy Policy | AR Solutions
+{% endblock %}
+
+{% block og_description %}
+Learn how AR Solutions handles information submitted through its website, contact forms and digital services.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-legal-page {
+    background: #070707;
+    color: #ffffff;
+  }
+
+  .ar-legal-hero {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid rgba(218, 172, 48, 0.16);
+    background:
+      radial-gradient(
+        circle at 82% 18%,
+        rgba(218, 172, 48, 0.13),
+        transparent 34%
+      ),
+      linear-gradient(180deg, #090909, #050505);
+  }
+
+  .ar-legal-eyebrow {
+    display: inline-block;
+    margin-bottom: 17px;
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+  }
+
+  .ar-legal-hero h1 {
+    margin: 0 0 20px;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.06;
+  }
+
+  .ar-legal-hero p {
+    max-width: 780px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.67);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .ar-legal-section {
+    padding: 80px 0;
+  }
+
+  .ar-legal-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 38px;
+    align-items: start;
+  }
+
+  .ar-legal-summary {
+    position: sticky;
+    top: 110px;
+    padding: 25px;
+    border: 1px solid rgba(218, 172, 48, 0.2);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .ar-legal-summary h3 {
+    margin: 0 0 15px;
+    color: #e1b43c;
+  }
+
+  .ar-legal-summary a {
+    display: block;
+    padding: 8px 0;
+    color: rgba(255, 255, 255, 0.62);
+    text-decoration: none;
+  }
+
+  .ar-legal-summary a:hover {
+    color: #e1b43c;
+  }
+
+  .ar-legal-content {
+    padding: 38px;
+    border: 1px solid rgba(218, 172, 48, 0.2);
+    border-radius: 22px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.012)
+      );
+  }
+
+  .ar-legal-content section {
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .ar-legal-content section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .ar-legal-content h2 {
+    margin: 0 0 15px;
+    color: #ffffff;
+    font-size: 25px;
+  }
+
+  .ar-legal-content p,
+  .ar-legal-content li {
+    color: rgba(255, 255, 255, 0.67);
+    line-height: 1.82;
+  }
+
+  .ar-legal-content ul {
+    display: grid;
+    gap: 8px;
+    padding-left: 22px;
+  }
+
+  .ar-legal-highlight {
+    padding: 18px;
+    margin-bottom: 28px;
+    border-left: 3px solid #d9aa35;
+    border-radius: 10px;
+    background: rgba(218, 172, 48, 0.07);
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+  }
+
+  .ar-legal-date {
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.47);
+    font-size: 14px;
+  }
+
+  @media (max-width: 850px) {
+    .ar-legal-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .ar-legal-summary {
+      position: static;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .ar-legal-hero {
+      padding: 72px 0 54px;
+    }
+
+    .ar-legal-section {
+      padding: 58px 0;
+    }
+
+    .ar-legal-content {
+      padding: 24px;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<main><section class="page-hero"><div class="container"><h1>Privacy Policy</h1></div></section><section class="section"><div class="container"><article class="card form-card"><p>This starter privacy policy must be updated to match AR Solutions, the website hosting, enquiry forms, analytics and customer-data practices before launch.</p></article></div></section></main>
+<main class="ar-legal-page">
+
+  <section class="ar-legal-hero">
+    <div class="ar-container">
+      <span class="ar-legal-eyebrow">Legal & Privacy</span>
+
+      <h1>Privacy Policy</h1>
+
+      <p>
+        This policy explains how AR Solutions collects, uses, stores and
+        protects information submitted through this website and related
+        digital services.
+      </p>
+
+      <div class="ar-legal-date">
+        Last updated: {% now "F Y" %}
+      </div>
+    </div>
+  </section>
+
+
+  <section class="ar-legal-section">
+    <div class="ar-container ar-legal-layout">
+
+      <aside class="ar-legal-summary">
+        <h3>On this page</h3>
+
+        <a href="#information-collected">Information collected</a>
+        <a href="#how-used">How information is used</a>
+        <a href="#legal-basis">Basis for processing</a>
+        <a href="#sharing">Information sharing</a>
+        <a href="#storage">Storage and security</a>
+        <a href="#retention">Retention</a>
+        <a href="#rights">Your rights</a>
+        <a href="#cookies">Cookies and analytics</a>
+        <a href="#contact-privacy">Contact us</a>
+      </aside>
+
+
+      <article class="ar-legal-content">
+
+        <div class="ar-legal-highlight">
+          By submitting an enquiry, demo request or other information through
+          this website, you confirm that the information provided is accurate
+          and that AR Solutions may use it to respond to your request.
+        </div>
+
+
+        <section id="information-collected">
+          <h2>1. Information We Collect</h2>
+
+          <p>
+            AR Solutions may collect information that you voluntarily provide
+            through contact forms, demo requests, email, telephone, WhatsApp
+            or other communication channels.
+          </p>
+
+          <p>This information may include:</p>
+
+          <ul>
+            <li>Your name and contact details.</li>
+            <li>Email address and telephone number.</li>
+            <li>Company or organisation name.</li>
+            <li>Service or product requirements.</li>
+            <li>Project information, messages and supporting documents.</li>
+            <li>
+              Technical information such as browser type, device type,
+              approximate location, IP address and website usage data.
+            </li>
+          </ul>
+
+          <p>
+            Please do not submit confidential, financial, medical, identity or
+            other sensitive information unless it is genuinely required and
+            specifically requested through an agreed secure method.
+          </p>
+        </section>
+
+
+        <section id="how-used">
+          <h2>2. How We Use Information</h2>
+
+          <p>Information may be used to:</p>
+
+          <ul>
+            <li>Respond to enquiries and support requests.</li>
+            <li>Understand your project or service requirements.</li>
+            <li>Prepare quotations, proposals and demonstrations.</li>
+            <li>Provide websites, software, portfolio or career services.</li>
+            <li>Provide technical support and project communication.</li>
+            <li>Improve website performance and user experience.</li>
+            <li>Prevent abuse, spam, fraud and security incidents.</li>
+            <li>Comply with applicable legal or regulatory requirements.</li>
+          </ul>
+
+          <p>
+            AR Solutions will not sell your personal information to unrelated
+            third parties.
+          </p>
+        </section>
+
+
+        <section id="legal-basis">
+          <h2>3. Basis for Processing</h2>
+
+          <p>
+            Depending on the situation, information may be processed because:
+          </p>
+
+          <ul>
+            <li>You have provided consent.</li>
+            <li>
+              Processing is needed to respond to your enquiry or prepare a
+              requested quotation.
+            </li>
+            <li>
+              Processing is needed to perform an agreed service or contract.
+            </li>
+            <li>
+              Processing is reasonably necessary for security, administration
+              or legitimate business operations.
+            </li>
+            <li>
+              Processing is required to comply with applicable legal
+              obligations.
+            </li>
+          </ul>
+        </section>
+
+
+        <section id="sharing">
+          <h2>4. Sharing of Information</h2>
+
+          <p>
+            Information may be shared only when reasonably required with
+            service providers that support website hosting, email delivery,
+            analytics, cloud services, payment processing, deployment or
+            technical operations.
+          </p>
+
+          <p>
+            Information may also be disclosed where required by law, court
+            order, regulatory authority, fraud investigation or protection of
+            legal rights.
+          </p>
+
+          <p>
+            Service providers may process information in other countries.
+            Reasonable steps will be taken to use reputable providers and
+            appropriate security measures.
+          </p>
+        </section>
+
+
+        <section id="storage">
+          <h2>5. Storage and Security</h2>
+
+          <p>
+            Enquiries may be stored in the website database, email systems,
+            cloud platforms, project files or authorised business records.
+          </p>
+
+          <p>
+            Reasonable administrative and technical measures are used to
+            reduce the risk of unauthorised access, loss, misuse or
+            disclosure. However, no online system can guarantee absolute
+            security.
+          </p>
+
+          <p>
+            Users are responsible for protecting passwords, login details and
+            confidential information shared through their own devices or
+            accounts.
+          </p>
+        </section>
+
+
+        <section id="retention">
+          <h2>6. Information Retention</h2>
+
+          <p>
+            Information will be retained only for as long as reasonably needed
+            for enquiries, project delivery, customer support, accounting,
+            dispute resolution, security or legal obligations.
+          </p>
+
+          <p>
+            Information that is no longer required may be deleted,
+            anonymised or securely archived.
+          </p>
+        </section>
+
+
+        <section id="rights">
+          <h2>7. Your Privacy Rights</h2>
+
+          <p>
+            Subject to applicable law and valid exceptions, you may request:
+          </p>
+
+          <ul>
+            <li>Information about the personal data held about you.</li>
+            <li>Correction of inaccurate or incomplete information.</li>
+            <li>Deletion of information that is no longer required.</li>
+            <li>Restriction or objection to certain processing.</li>
+            <li>Withdrawal of consent where processing relies on consent.</li>
+          </ul>
+
+          <p>
+            AR Solutions may request verification before processing a privacy
+            request. Certain information may need to be retained where
+            required for legal, contractual, accounting or security reasons.
+          </p>
+        </section>
+
+
+        <section id="cookies">
+          <h2>8. Cookies, Analytics and External Links</h2>
+
+          <p>
+            This website may use essential cookies or similar technologies for
+            security, preferences and basic operation.
+          </p>
+
+          <p>
+            Analytics services may be introduced to understand visitor numbers,
+            page usage, device types and website performance. This policy will
+            be updated if additional tracking or advertising technologies are
+            introduced.
+          </p>
+
+          <p>
+            The website may contain links to third-party websites, social
+            networks or communication platforms. AR Solutions is not
+            responsible for the privacy practices or content of those external
+            services.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>9. Children’s Information</h2>
+
+          <p>
+            This website and its commercial services are not intentionally
+            directed at children. Personal information relating to a child
+            should not be submitted without the involvement and consent of a
+            parent or legal guardian.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>10. Changes to This Policy</h2>
+
+          <p>
+            This Privacy Policy may be updated when services, legal
+            requirements, hosting providers or data practices change. The
+            updated version will be published on this page with a revised
+            update date.
+          </p>
+        </section>
+
+
+        <section id="contact-privacy">
+          <h2>11. Contact Us</h2>
+
+          <p>
+            Questions or requests concerning this Privacy Policy may be sent
+            through the Contact page.
+          </p>
+
+          {% if company_settings.email %}
+          <p>
+            Email:
+            <a href="mailto:{{ company_settings.email }}">
+              {{ company_settings.email }}
+            </a>
+          </p>
+          {% endif %}
+
+          <a class="ar-primary-button" href="{% url 'contact' %}">
+            Contact AR Solutions <span>→</span>
+          </a>
+        </section>
+
+      </article>
+    </div>
+  </section>
+
+</main>
 {% endblock %}

@@ -1,16 +1,661 @@
 {% extends 'website/base.html' %}
-{% block title %}Products | AR Solutions{% endblock %}
+
+{% block title %}
+Products & Services | Websites, Portfolios, Software, CV Writing & IT Solutions | AR Solutions
+{% endblock %}
+
+{% block meta_description %}
+Explore AR Solutions services including website development, portfolio websites, custom software, ERP systems, professional CV and cover letter writing, and IT solutions.
+{% endblock %}
+
+{% block og_title %}
+AR Solutions | Websites, Software, Portfolios, CV Writing & IT Solutions
+{% endblock %}
+
+{% block og_description %}
+Complete digital solutions including websites, portfolio websites, custom business software, ERP systems, CV and cover letter writing, and IT support.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-products-main {
+    background: #070707;
+    color: #ffffff;
+  }
+
+  .ar-products-hero {
+    padding: 100px 0 78px;
+    border-bottom: 1px solid rgba(218, 172, 48, 0.16);
+    background:
+      radial-gradient(
+        circle at 80% 15%,
+        rgba(218, 172, 48, 0.13),
+        transparent 34%
+      ),
+      linear-gradient(180deg, #090909, #050505);
+  }
+
+  .ar-products-hero-content {
+    max-width: 900px;
+  }
+
+  .ar-products-eyebrow {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .ar-products-hero h1 {
+    margin: 0 0 22px;
+    font-size: clamp(42px, 6vw, 74px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .ar-products-hero h1 span {
+    color: #d9aa35;
+  }
+
+  .ar-products-hero p {
+    max-width: 780px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .ar-products-section {
+    padding: 90px 0;
+  }
+
+  .ar-products-heading {
+    max-width: 800px;
+    margin-bottom: 42px;
+  }
+
+  .ar-products-heading span {
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .ar-products-heading h2 {
+    margin: 14px 0 14px;
+    font-size: clamp(31px, 4vw, 48px);
+    line-height: 1.15;
+  }
+
+  .ar-products-heading p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.75;
+  }
+
+  .ar-main-products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .ar-main-product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    overflow: hidden;
+    border: 1px solid rgba(218, 172, 48, 0.22);
+    border-radius: 22px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.012)
+      );
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .ar-main-product-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 28px;
+    width: 85px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #e0b33c,
+      transparent
+    );
+  }
+
+  .ar-main-product-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(229, 184, 61, 0.48);
+    box-shadow: 0 22px 58px rgba(0, 0, 0, 0.38);
+  }
+
+  .ar-main-product-card.featured {
+    grid-column: span 2;
+    background:
+      radial-gradient(
+        circle at 90% 10%,
+        rgba(218, 172, 48, 0.14),
+        transparent 38%
+      ),
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.012)
+      );
+  }
+
+  .ar-main-product-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .ar-main-product-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 58px;
+    height: 58px;
+    border: 1px solid rgba(218, 172, 48, 0.34);
+    border-radius: 16px;
+    color: #e1b33b;
+    background: rgba(218, 172, 48, 0.08);
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  .ar-main-product-title h3 {
+    margin: 0 0 8px;
+    font-size: 25px;
+    line-height: 1.3;
+  }
+
+  .ar-main-product-title p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.72;
+  }
+
+  .ar-subdivision-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px 16px;
+    margin: 4px 0 26px;
+  }
+
+  .ar-subdivision-grid span {
+    position: relative;
+    padding: 12px 14px 12px 34px;
+    border: 1px solid rgba(218, 172, 48, 0.14);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.76);
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .ar-subdivision-grid span::before {
+    content: "✓";
+    position: absolute;
+    left: 14px;
+    color: #d9aa35;
+    font-weight: 700;
+  }
+
+  .ar-main-product-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .ar-products-note-section {
+    padding: 90px 0;
+    border-top: 1px solid rgba(218, 172, 48, 0.12);
+    background:
+      radial-gradient(
+        circle at 15% 40%,
+        rgba(218, 172, 48, 0.08),
+        transparent 30%
+      ),
+      #080808;
+  }
+
+  .ar-products-note {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .ar-products-note h2 {
+    margin: 12px 0 18px;
+    font-size: clamp(33px, 5vw, 54px);
+    line-height: 1.12;
+  }
+
+  .ar-products-note p {
+    margin: 0 0 27px;
+    color: rgba(255, 255, 255, 0.66);
+    line-height: 1.8;
+  }
+
+  .ar-products-note-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .ar-products-note-list span {
+    padding: 14px 16px;
+    border: 1px solid rgba(218, 172, 48, 0.16);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.76);
+    background: rgba(255, 255, 255, 0.022);
+  }
+
+  .ar-products-cta-section {
+    padding: 85px 0;
+  }
+
+  .ar-products-cta {
+    padding: 55px 35px;
+    text-align: center;
+    border: 1px solid rgba(218, 172, 48, 0.27);
+    border-radius: 24px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(218, 172, 48, 0.12),
+        rgba(255, 255, 255, 0.02)
+      );
+  }
+
+  .ar-products-cta h2 {
+    margin: 0 0 15px;
+    font-size: clamp(31px, 4vw, 50px);
+  }
+
+  .ar-products-cta p {
+    max-width: 760px;
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, 0.67);
+    line-height: 1.75;
+  }
+
+  .ar-products-cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  @media (max-width: 900px) {
+    .ar-main-products-grid,
+    .ar-products-note {
+      grid-template-columns: 1fr;
+    }
+
+    .ar-main-product-card.featured {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .ar-products-hero {
+      padding: 78px 0 60px;
+    }
+
+    .ar-products-section,
+    .ar-products-note-section,
+    .ar-products-cta-section {
+      padding: 62px 0;
+    }
+
+    .ar-subdivision-grid,
+    .ar-products-note-list {
+      grid-template-columns: 1fr;
+    }
+
+    .ar-main-product-card {
+      padding: 24px;
+    }
+
+    .ar-main-product-top {
+      flex-direction: column;
+    }
+
+    .ar-main-product-actions,
+    .ar-products-cta-actions {
+      flex-direction: column;
+    }
+
+    .ar-main-product-actions a,
+    .ar-products-cta-actions a {
+      width: 100%;
+      text-align: center;
+    }
+
+    .ar-products-cta {
+      padding: 40px 20px;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<main>
-<section class="page-hero"><div class="container"><span class="eyebrow">AR SOLUTIONS PRODUCTS</span><h1>Professional software built around real business workflows.</h1><p class="hero-lead">Manage products from the Django admin panel.</p></div></section>
-<section class="section"><div class="container cards-3">
-{% for product in products %}
-<article class="card"><div class="module-icon">⚙</div><h3>{{ product.name }}</h3><p>{{ product.short_description }}</p>
-{% if product.slug == "engicore-erp" %}<a class="btn-primary" href="{% url 'engineering_erp' %}">Explore Product</a>{% endif %}
-</article>
-{% empty %}
-<article class="card"><h3>EngiCore ERP</h3><p>Add products through Admin → Products.</p><a class="btn-primary" href="{% url 'engineering_erp' %}">Explore Product</a></article>
-{% endfor %}
-</div></section>
+<main class="ar-products-main">
+
+  <section class="ar-products-hero">
+    <div class="ar-container">
+      <div class="ar-products-hero-content">
+
+        <span class="ar-products-eyebrow">
+          AR Solutions Products & Services
+        </span>
+
+        <h1>
+          Complete digital solutions for
+          <span>businesses and professionals.</span>
+        </h1>
+
+        <p>
+          Choose from website development, portfolio websites, business
+          software, professional career services and practical IT solutions.
+          Every service can be tailored to your exact requirements.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="ar-products-section">
+    <div class="ar-container">
+
+      <div class="ar-products-heading">
+        <span>Our Main Products</span>
+
+
+        <p>
+          Each main category includes different options based on your goals,
+          business type, budget and required features.
+        </p>
+      </div>
+
+      <div class="ar-main-products-grid">
+
+        <article class="ar-main-product-card">
+
+          <div class="ar-main-product-top">
+            <div class="ar-main-product-icon">WEB</div>
+
+            <div class="ar-main-product-title">
+              <h3>Website Development</h3>
+
+              <p>
+                Professional, responsive and SEO-friendly websites designed
+                for businesses, companies, shops and service providers.
+              </p>
+            </div>
+          </div>
+
+          <div class="ar-subdivision-grid">
+            <span>Business Websites</span>
+            <span>Corporate Websites</span>
+            <span>E-commerce Websites</span>
+            <span>Service Websites</span>
+            <span>Landing Pages</span>
+            <span>Website Redesign</span>
+            <span>Responsive Websites</span>
+            <span>SEO-ready Websites</span>
+          </div>
+
+          <div class="ar-main-product-actions">
+            <a class="ar-primary-button" href="{% url 'contact' %}">
+              Request a Website <span>→</span>
+            </a>
+          </div>
+
+        </article>
+
+        <article class="ar-main-product-card">
+
+          <div class="ar-main-product-top">
+            <div class="ar-main-product-icon">PORT</div>
+
+            <div class="ar-main-product-title">
+              <h3>Portfolio Websites</h3>
+
+              <p>
+                Premium digital portfolios that professionally present
+                experience, skills, projects, services and achievements.
+              </p>
+            </div>
+          </div>
+
+          <div class="ar-subdivision-grid">
+            <span>Personal Portfolio</span>
+            <span>Professional Portfolio</span>
+            <span>Freelancer Portfolio</span>
+            <span>Company Profile Website</span>
+            <span>Digital Portfolio</span>
+            <span>Creative Portfolio</span>
+            <span>HSE Portfolio</span>
+            <span>Project Portfolio</span>
+          </div>
+
+          <div class="ar-main-product-actions">
+            <a class="ar-primary-button" href="{% url 'contact' %}">
+              Build Your Portfolio <span>→</span>
+            </a>
+          </div>
+
+        </article>
+
+        <article class="ar-main-product-card featured">
+
+          <div class="ar-main-product-top">
+            <div class="ar-main-product-icon">DEV</div>
+
+            <div class="ar-main-product-title">
+              <h3>Software Development</h3>
+
+              <p>
+                Custom business software and management systems developed
+                around your workflow, users, reports and operational needs.
+              </p>
+            </div>
+          </div>
+
+          <div class="ar-subdivision-grid">
+            <span>Engineering ERP</span>
+            <span>Project Management Software</span>
+            <span>Accounting Software</span>
+            <span>Sales & Billing Software</span>
+            <span>Inventory Management</span>
+            <span>CRM Software</span>
+            <span>HR & Payroll Software</span>
+            <span>Purchase Management</span>
+            <span>Customer Management</span>
+            <span>Supplier Management</span>
+            <span>Reporting Systems</span>
+            <span>Custom Business Software</span>
+          </div>
+
+          <div class="ar-main-product-actions">
+            <a
+              class="ar-primary-button"
+              href="{% url 'engineering_erp' %}"
+            >
+              Explore EngiCore ERP <span>→</span>
+            </a>
+
+            <a
+              class="ar-outline-button"
+              href="{% url 'contact' %}"
+            >
+              Request Custom Software
+            </a>
+          </div>
+
+        </article>
+
+        <article class="ar-main-product-card">
+
+          <div class="ar-main-product-top">
+            <div class="ar-main-product-icon">CV</div>
+
+            <div class="ar-main-product-title">
+              <h3>CV & Career Services</h3>
+
+              <p>
+                Professional career documents designed for job applications,
+                ATS systems, different industries and specific vacancies.
+              </p>
+            </div>
+          </div>
+
+          <div class="ar-subdivision-grid">
+            <span>ATS-friendly CV</span>
+            <span>Professional Resume Writing</span>
+            <span>Cover Letter Writing</span>
+            <span>Job-specific CV</span>
+            <span>CV Redesign</span>
+            <span>LinkedIn Profile Content</span>
+            <span>Fresh Graduate CV</span>
+            <span>Experienced Professional CV</span>
+          </div>
+
+          <div class="ar-main-product-actions">
+            <a class="ar-primary-button" href="{% url 'contact' %}">
+              Request Career Service <span>→</span>
+            </a>
+          </div>
+
+        </article>
+
+        <article class="ar-main-product-card">
+
+          <div class="ar-main-product-top">
+            <div class="ar-main-product-icon">IT</div>
+
+            <div class="ar-main-product-title">
+              <h3>IT Solutions</h3>
+
+              <p>
+                Practical technology services that help businesses improve
+                systems, automate work and solve daily technical needs.
+              </p>
+            </div>
+          </div>
+
+          <div class="ar-subdivision-grid">
+            <span>Business Automation</span>
+            <span>Digital Consulting</span>
+            <span>Cloud Solutions</span>
+            <span>Technical Support</span>
+            <span>System Maintenance</span>
+            <span>Software Support</span>
+            <span>Website Maintenance</span>
+            <span>Custom IT Support</span>
+          </div>
+
+          <div class="ar-main-product-actions">
+            <a class="ar-primary-button" href="{% url 'support' %}">
+              Explore IT Support <span>→</span>
+            </a>
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="ar-products-note-section">
+    <div class="ar-container ar-products-note">
+
+      <div>
+        <span class="ar-products-eyebrow">
+          Tailored Solutions
+        </span>
+
+        <h2>
+          Every Project Can Be Customised
+        </h2>
+
+        <p>
+          The final design, features, pages, modules, reports and content can
+          be changed according to your requirements. You can choose a standard
+          service or request a fully customised solution.
+        </p>
+
+        <a class="ar-primary-button" href="{% url 'contact' %}">
+          Discuss Your Requirements <span>→</span>
+        </a>
+      </div>
+
+      <div class="ar-products-note-list">
+        <span>Businesses & Startups</span>
+        <span>Engineering Companies</span>
+        <span>Freelancers</span>
+        <span>Job Seekers</span>
+        <span>Service Companies</span>
+        <span>Trading Companies</span>
+        <span>Professionals</span>
+        <span>Custom Requirements</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="ar-products-cta-section">
+    <div class="ar-container">
+
+      <div class="ar-products-cta">
+
+        <h2>
+          Not Sure Which Service You Need?
+        </h2>
+
+        <p>
+          Tell us your goal, current situation and required result. We will
+          help you select the right website, portfolio, software, career
+          service or IT solution.
+        </p>
+
+        <div class="ar-products-cta-actions">
+
+          <a class="ar-primary-button" href="{% url 'contact' %}">
+            Get Free Consultation <span>→</span>
+          </a>
+
+          <a class="ar-outline-button" href="{% url 'demo' %}">
+            Request Software Demo
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </main>
 {% endblock %}

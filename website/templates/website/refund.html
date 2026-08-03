@@ -1,5 +1,394 @@
 {% extends 'website/base.html' %}
-{% block title %}Refund Policy | AR Solutions{% endblock %}
+
+{% block title %}
+Refund & Cancellation Policy | AR Solutions
+{% endblock %}
+
+{% block meta_description %}
+Read the AR Solutions refund and cancellation policy for websites, portfolios, software development, CV writing and IT services.
+{% endblock %}
+
+{% block og_title %}
+Refund & Cancellation Policy | AR Solutions
+{% endblock %}
+
+{% block og_description %}
+Refund, cancellation, deposit, milestone and custom-service conditions for AR Solutions projects and digital services.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-legal-page {
+    background: #070707;
+    color: #ffffff;
+  }
+
+  .ar-legal-hero {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid rgba(218,172,48,.16);
+    background:
+      radial-gradient(circle at 82% 18%, rgba(218,172,48,.13), transparent 34%),
+      linear-gradient(180deg, #090909, #050505);
+  }
+
+  .ar-legal-eyebrow {
+    display: inline-block;
+    margin-bottom: 17px;
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+  }
+
+  .ar-legal-hero h1 {
+    margin: 0 0 20px;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.06;
+  }
+
+  .ar-legal-hero p {
+    max-width: 790px;
+    margin: 0;
+    color: rgba(255,255,255,.67);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .ar-legal-section {
+    padding: 80px 0;
+  }
+
+  .ar-legal-content {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid rgba(218,172,48,.2);
+    border-radius: 22px;
+    background: linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+  }
+
+  .ar-legal-content section {
+    padding-bottom: 31px;
+    margin-bottom: 31px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .ar-legal-content section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .ar-legal-content h2 {
+    margin: 0 0 15px;
+    font-size: 25px;
+  }
+
+  .ar-legal-content p,
+  .ar-legal-content li {
+    color: rgba(255,255,255,.67);
+    line-height: 1.82;
+  }
+
+  .ar-legal-content ul {
+    display: grid;
+    gap: 8px;
+    padding-left: 22px;
+  }
+
+  .ar-legal-highlight {
+    padding: 18px;
+    margin-bottom: 28px;
+    border-left: 3px solid #d9aa35;
+    border-radius: 10px;
+    background: rgba(218,172,48,.07);
+    color: rgba(255,255,255,.76);
+    line-height: 1.72;
+  }
+
+  .ar-legal-date {
+    margin-top: 18px;
+    color: rgba(255,255,255,.47);
+    font-size: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .ar-legal-hero {
+      padding: 72px 0 54px;
+    }
+
+    .ar-legal-section {
+      padding: 58px 0;
+    }
+
+    .ar-legal-content {
+      padding: 24px;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<main><section class="page-hero"><div class="container"><h1>Refund & Cancellation Policy</h1></div></section><section class="section"><div class="container"><article class="card form-card"><p>Define deposits, customization fees, implementation milestones, cancellations and refund eligibility before launch.</p></article></div></section></main>
+<main class="ar-legal-page">
+
+  <section class="ar-legal-hero">
+    <div class="ar-container">
+      <span class="ar-legal-eyebrow">Payments & Cancellations</span>
+
+      <h1>Refund & Cancellation Policy</h1>
+
+      <p>
+        This policy explains the general cancellation and refund approach for
+        customised digital services supplied by AR Solutions.
+      </p>
+
+      <div class="ar-legal-date">
+        Last updated: {% now "F Y" %}
+      </div>
+    </div>
+  </section>
+
+
+  <section class="ar-legal-section">
+    <div class="ar-container">
+
+      <article class="ar-legal-content">
+
+        <div class="ar-legal-highlight">
+          Most AR Solutions services are customised and involve reserved time,
+          planning and development work. Refund eligibility therefore depends
+          on the work already completed, third-party costs and the terms of
+          the accepted quotation.
+        </div>
+
+
+        <section>
+          <h2>1. Project-Specific Terms</h2>
+
+          <p>
+            The accepted quotation, invoice or written agreement may state
+            specific deposit, milestone, cancellation and refund terms. Where
+            project-specific terms differ from this general policy, the
+            project-specific written terms will apply, subject to applicable
+            law.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>2. Advance Payments and Deposits</h2>
+
+          <p>
+            An advance payment may be required to reserve development time and
+            begin planning, design, research, setup or customisation.
+          </p>
+
+          <p>
+            Once work has started, the advance may be used against work
+            completed, administrative time, reserved capacity and committed
+            third-party costs.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>3. Cancellation Before Work Starts</h2>
+
+          <p>
+            A cancellation request made before work begins may be eligible for
+            a refund, less any:
+          </p>
+
+          <ul>
+            <li>Payment-processing or bank charges.</li>
+            <li>Consultation or planning work already completed.</li>
+            <li>Non-refundable third-party purchases.</li>
+            <li>Administrative costs stated in the quotation.</li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h2>4. Cancellation After Work Starts</h2>
+
+          <p>
+            When cancellation is requested after work has begun, AR Solutions
+            may calculate the value of:
+          </p>
+
+          <ul>
+            <li>Discovery, consultation and requirement analysis.</li>
+            <li>Design concepts and revisions.</li>
+            <li>Development or content work completed.</li>
+            <li>Project management and communication time.</li>
+            <li>Purchased domains, hosting, plugins or services.</li>
+            <li>Other committed or non-recoverable expenses.</li>
+          </ul>
+
+          <p>
+            Any eligible remaining balance may be refunded after deducting
+            these amounts.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>5. Completed or Delivered Work</h2>
+
+          <p>
+            Payments for completed, approved, delivered, deployed or downloaded
+            customised work are generally not refundable, except where required
+            by applicable law or expressly agreed in writing.
+          </p>
+
+          <p>
+            This may include websites, portfolios, software modules, source
+            files, CVs, cover letters, content and technical services.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>6. Software and Custom Development</h2>
+
+          <p>
+            Software projects may be divided into milestones. Payment for an
+            approved or completed milestone is generally non-refundable.
+          </p>
+
+          <p>
+            A cancellation does not automatically provide rights to unfinished
+            source code, internal tools or unlicensed components. Delivery of
+            partially completed work will depend on payment status, technical
+            feasibility and the project agreement.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>7. CV, Cover Letter and Content Services</h2>
+
+          <p>
+            Once writing, editing, research or formatting has started, the
+            relevant payment may become partly or fully non-refundable,
+            depending on the work completed.
+          </p>
+
+          <p>
+            Dissatisfaction based solely on a job application outcome,
+            interview result or employer decision does not create automatic
+            refund eligibility.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>8. Website, Hosting and Domain Expenses</h2>
+
+          <p>
+            Domain registrations, hosting plans, licences, paid plugins,
+            certificates, platform fees and similar third-party charges may be
+            non-refundable because they are purchased from external providers.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>9. Customer Delays or Abandonment</h2>
+
+          <p>
+            A project may be considered inactive when the customer does not
+            provide required content, feedback, approvals or payment for an
+            extended period.
+          </p>
+
+          <p>
+            Restarting an inactive project may require a revised schedule,
+            reactivation fee or updated quotation. Payments already applied to
+            completed work or reserved capacity may not be refundable.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>10. Service Issues and Corrections</h2>
+
+          <p>
+            Customers should report genuine defects or failures within the
+            support or review period stated in the agreement.
+          </p>
+
+          <p>
+            AR Solutions should normally be given a reasonable opportunity to
+            investigate and correct an issue before a refund is considered.
+          </p>
+
+          <p>
+            Refunds may not be available for issues caused by unauthorised
+            modifications, customer misuse, third-party outages, expired
+            services or circumstances outside reasonable control.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>11. Refund Method and Processing</h2>
+
+          <p>
+            An approved refund will normally be returned using an agreed
+            method. Processing time may depend on banks, payment processors and
+            service providers.
+          </p>
+
+          <p>
+            Any bank charges, currency-conversion differences or processing
+            fees may be deducted where permitted and applicable.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>12. How to Request Cancellation or Refund</h2>
+
+          <p>
+            A request should be submitted in writing and should include:
+          </p>
+
+          <ul>
+            <li>Customer name and contact details.</li>
+            <li>Quotation, invoice or project reference.</li>
+            <li>The reason for cancellation or refund request.</li>
+            <li>Relevant supporting information.</li>
+          </ul>
+
+          <p>
+            Each request will be reviewed according to the project stage,
+            completed work, third-party expenses, written agreement and
+            applicable law.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>13. Contact</h2>
+
+          <p>
+            Submit a cancellation or refund enquiry through the Contact page.
+          </p>
+
+          <a class="ar-primary-button" href="{% url 'contact' %}">
+            Submit a Request <span>→</span>
+          </a>
+        </section>
+
+      </article>
+    </div>
+  </section>
+
+</main>
 {% endblock %}

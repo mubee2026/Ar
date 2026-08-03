@@ -1,89 +1,979 @@
 {% extends 'website/base.html' %}
-{% block title %}Contact | {{ company_settings.company_name }}{% endblock %}
+
+{% block title %}
+Contact AR Solutions | Websites, Software, Portfolios, CV Writing & IT Solutions
+{% endblock %}
+
+{% block meta_description %}
+Contact AR Solutions for website development, portfolio websites, custom software, ERP systems, CV and cover letter writing, and IT solutions.
+{% endblock %}
+
+{% block og_title %}
+Contact AR Solutions | Start Your Next Digital Project
+{% endblock %}
+
+{% block og_description %}
+Discuss your website, portfolio, custom software, ERP, career document or IT support requirement with AR Solutions.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-contact-page {
+    background: #070707;
+    color: #ffffff;
+  }
+
+  .ar-contact-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 105px 0 82px;
+    border-bottom: 1px solid rgba(218, 172, 48, 0.16);
+    background:
+      radial-gradient(
+        circle at 82% 18%,
+        rgba(218, 172, 48, 0.14),
+        transparent 34%
+      ),
+      linear-gradient(180deg, #090909, #050505);
+  }
+
+  .ar-contact-hero::after {
+    content: "";
+    position: absolute;
+    top: -170px;
+    right: -140px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(218, 172, 48, 0.13);
+    border-radius: 50%;
+  }
+
+  .ar-contact-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 920px;
+  }
+
+  .ar-contact-eyebrow {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .ar-contact-hero h1 {
+    max-width: 900px;
+    margin: 0 0 24px;
+    font-size: clamp(42px, 6vw, 75px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .ar-contact-hero h1 span {
+    color: #d9aa35;
+  }
+
+  .ar-contact-hero p {
+    max-width: 790px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.69);
+    font-size: 18px;
+    line-height: 1.82;
+  }
+
+  .ar-contact-section {
+    padding: 90px 0;
+  }
+
+  .ar-contact-section.alt {
+    border-top: 1px solid rgba(218, 172, 48, 0.12);
+    border-bottom: 1px solid rgba(218, 172, 48, 0.12);
+    background:
+      radial-gradient(
+        circle at 15% 30%,
+        rgba(218, 172, 48, 0.08),
+        transparent 30%
+      ),
+      #080808;
+  }
+
+  .ar-contact-heading {
+    max-width: 800px;
+    margin-bottom: 42px;
+  }
+
+  .ar-contact-heading span {
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .ar-contact-heading h2 {
+    margin: 14px 0 14px;
+    font-size: clamp(31px, 4vw, 49px);
+    line-height: 1.14;
+  }
+
+  .ar-contact-heading p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.76;
+  }
+
+  .ar-contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .ar-contact-card {
+    position: relative;
+    padding: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(218, 172, 48, 0.2);
+    border-radius: 20px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.012)
+      );
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .ar-contact-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 26px;
+    width: 72px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #e0b33c,
+      transparent
+    );
+  }
+
+  .ar-contact-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(229, 184, 61, 0.46);
+  }
+
+  .ar-contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 21px;
+    border: 1px solid rgba(218, 172, 48, 0.34);
+    border-radius: 15px;
+    color: #e1b33b;
+    background: rgba(218, 172, 48, 0.08);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .ar-contact-card h3 {
+    margin: 0 0 12px;
+    font-size: 21px;
+  }
+
+  .ar-contact-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.7;
+  }
+
+  .ar-contact-card a:not(.ar-primary-button):not(.ar-outline-button) {
+    color: #e3b63e;
+    text-decoration: none;
+    word-break: break-word;
+  }
+
+  .ar-contact-card a:hover {
+    color: #ffffff;
+  }
+
+  .ar-contact-button-wrap {
+    margin-top: 20px;
+  }
+
+  .ar-contact-form-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 34px;
+    align-items: start;
+  }
+
+  .ar-contact-form-intro {
+    position: sticky;
+    top: 110px;
+    padding: 32px;
+    border: 1px solid rgba(218, 172, 48, 0.2);
+    border-radius: 22px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.012)
+      );
+  }
+
+  .ar-contact-form-intro h2 {
+    margin: 12px 0 17px;
+    font-size: clamp(30px, 4vw, 45px);
+    line-height: 1.14;
+  }
+
+  .ar-contact-form-intro > p {
+    margin: 0 0 25px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.78;
+  }
+
+  .ar-contact-benefits {
+    display: grid;
+    gap: 12px;
+  }
+
+  .ar-contact-benefits span {
+    position: relative;
+    padding: 13px 14px 13px 38px;
+    border: 1px solid rgba(218, 172, 48, 0.14);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.76);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .ar-contact-benefits span::before {
+    content: "✓";
+    position: absolute;
+    left: 15px;
+    color: #d9aa35;
+    font-weight: 700;
+  }
+
+  .ar-form-card {
+    padding: 34px;
+    border: 1px solid rgba(218, 172, 48, 0.22);
+    border-radius: 22px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.014)
+      );
+  }
+
+  .ar-form-card h2 {
+    margin: 0 0 10px;
+    font-size: 30px;
+  }
+
+  .ar-form-card > p {
+    margin: 0 0 28px;
+    color: rgba(255, 255, 255, 0.61);
+    line-height: 1.7;
+  }
+
+  .ar-contact-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .ar-contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .ar-contact-field.full {
+    grid-column: 1 / -1;
+  }
+
+  .ar-contact-field label {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .ar-contact-field input,
+  .ar-contact-field select,
+  .ar-contact-field textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 13px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 11px;
+    outline: none;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.035);
+    font: inherit;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .ar-contact-field textarea {
+    min-height: 145px;
+    resize: vertical;
+  }
+
+  .ar-contact-field select option {
+    color: #111111;
+    background: #ffffff;
+  }
+
+  .ar-contact-field input:focus,
+  .ar-contact-field select:focus,
+  .ar-contact-field textarea:focus {
+    border-color: rgba(226, 180, 59, 0.68);
+    box-shadow: 0 0 0 3px rgba(218, 172, 48, 0.08);
+  }
+
+  .ar-form-error {
+    color: #ff8998;
+    font-size: 12px;
+  }
+
+  .ar-submit-button {
+    border: 0;
+    cursor: pointer;
+  }
+
+  .ar-services-interest-grid,
+  .ar-why-contact-grid,
+  .ar-faq-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .ar-services-interest-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .ar-why-contact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ar-faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ar-service-interest {
+    padding: 24px 20px;
+    text-align: center;
+    border: 1px solid rgba(218, 172, 48, 0.17);
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.023);
+  }
+
+  .ar-service-interest strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #ffffff;
+  }
+
+  .ar-service-interest span {
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .ar-why-contact-card,
+  .ar-faq-card {
+    padding: 27px;
+    border: 1px solid rgba(218, 172, 48, 0.18);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.024);
+  }
+
+  .ar-why-contact-card h3,
+  .ar-faq-card h3 {
+    margin: 0 0 11px;
+    font-size: 19px;
+  }
+
+  .ar-why-contact-card p,
+  .ar-faq-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.63);
+    line-height: 1.72;
+  }
+
+  .ar-contact-cta-section {
+    padding: 85px 0;
+  }
+
+  .ar-contact-cta {
+    padding: 56px 34px;
+    text-align: center;
+    border: 1px solid rgba(218, 172, 48, 0.27);
+    border-radius: 24px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(218, 172, 48, 0.12),
+        rgba(255, 255, 255, 0.02)
+      );
+  }
+
+  .ar-contact-cta h2 {
+    margin: 0 0 15px;
+    font-size: clamp(31px, 4vw, 51px);
+  }
+
+  .ar-contact-cta p {
+    max-width: 760px;
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, 0.67);
+    line-height: 1.76;
+  }
+
+  .ar-contact-cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  @media (max-width: 1100px) {
+    .ar-services-interest-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .ar-why-contact-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .ar-contact-info-grid,
+    .ar-contact-form-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .ar-contact-form-intro {
+      position: static;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .ar-contact-hero {
+      padding: 78px 0 60px;
+    }
+
+    .ar-contact-section,
+    .ar-contact-cta-section {
+      padding: 62px 0;
+    }
+
+    .ar-contact-form-grid,
+    .ar-services-interest-grid,
+    .ar-why-contact-grid,
+    .ar-faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ar-contact-field {
+      grid-column: 1 / -1;
+    }
+
+    .ar-form-card,
+    .ar-contact-form-intro {
+      padding: 24px;
+    }
+
+    .ar-contact-cta {
+      padding: 40px 20px;
+    }
+
+    .ar-contact-cta-actions {
+      flex-direction: column;
+    }
+
+    .ar-contact-cta-actions a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<main>
-<section class="page-hero">
-  <div class="container">
-    <span class="eyebrow">CONTACT SALES</span>
-    <h1>Let’s discuss your software requirements.</h1>
-    <p class="hero-lead">Contact our sales team or submit the enquiry form.</p>
-  </div>
-</section>
+<main class="ar-contact-page">
 
-<section class="section">
-  <div class="container cards-3">
-    <article class="card">
-      <h3>Email</h3>
-      {% if company_settings.email %}
-        <p><a href="mailto:{{ company_settings.email }}">{{ company_settings.email }}</a></p>
-      {% else %}
-        <p>Add email in Admin → Company Settings.</p>
-      {% endif %}
-    </article>
+  <!-- HERO -->
 
-    <article class="card">
-      <h3>Phone</h3>
-      {% if company_settings.phone %}
-        <p><a href="tel:{{ company_settings.phone }}">{{ company_settings.phone }}</a></p>
-      {% else %}
-        <p>Add phone in Admin → Company Settings.</p>
-      {% endif %}
-    </article>
+  <section class="ar-contact-hero">
+    <div class="ar-container">
 
-    <article class="card">
-      <h3>WhatsApp</h3>
-      {% if company_settings.whatsapp_url %}
-        <p><a class="btn-primary" href="{{ company_settings.whatsapp_url }}" target="_blank" rel="noopener">Open WhatsApp</a></p>
-      {% else %}
-        <p>Add WhatsApp number in Admin → Company Settings.</p>
-      {% endif %}
-    </article>
-  </div>
-</section>
+      <div class="ar-contact-hero-content">
+        <span class="ar-contact-eyebrow">
+          Contact AR Solutions
+        </span>
 
-{% if company_settings.address or company_settings.working_hours %}
-<section class="section">
-  <div class="container cards-3">
-    {% if company_settings.address %}
-    <article class="card">
-      <h3>Address</h3>
-      <p>{{ company_settings.address|linebreaksbr }}</p>
-      {% if company_settings.google_maps_url %}
-        <a class="btn-outline" href="{{ company_settings.google_maps_url }}" target="_blank" rel="noopener">Open Map</a>
-      {% endif %}
-    </article>
-    {% endif %}
+        <h1>
+          Let’s discuss your
+          <span>next digital project.</span>
+        </h1>
 
-    {% if company_settings.working_hours %}
-    <article class="card">
-      <h3>Working Hours</h3>
-      <p>{{ company_settings.working_hours }}</p>
-    </article>
-    {% endif %}
-  </div>
-</section>
-{% endif %}
+        <p>
+          Whether you need a website, portfolio, custom software, ERP system,
+          professional CV, cover letter or IT support, share your requirement
+          with us and we will help you choose the right solution.
+        </p>
+      </div>
 
-<section class="section">
-  <div class="container">
-    <article class="card form-card">
-      <form method="post">
-        {% csrf_token %}
-        <div class="form-grid">
-          {% for field in form %}
-          <div class="{% if field.name == 'message' %}field-full{% endif %}">
-            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-            {{ field }}
-            {% if field.errors %}<small style="color:#ff7284">{{ field.errors|striptags }}</small>{% endif %}
+    </div>
+  </section>
+
+  <!-- CONTACT INFORMATION -->
+
+  <section class="ar-contact-section">
+    <div class="ar-container">
+
+      <div class="ar-contact-heading">
+        <span>Contact Options</span>
+
+        <h2>
+          Choose the Most Convenient Way to Reach Us
+        </h2>
+
+        <p>
+          You can contact AR Solutions by email, phone, WhatsApp or the enquiry
+          form below.
+        </p>
+      </div>
+
+      <div class="ar-contact-info-grid">
+
+        <article class="ar-contact-card">
+          <div class="ar-contact-icon">@</div>
+
+          <h3>Email</h3>
+
+          {% if company_settings.email %}
+            <p>
+              <a href="mailto:{{ company_settings.email }}">
+                {{ company_settings.email }}
+              </a>
+            </p>
+          {% else %}
+            <p>Email details will be updated soon.</p>
+          {% endif %}
+        </article>
+
+        <article class="ar-contact-card">
+          <div class="ar-contact-icon">☎</div>
+
+          <h3>Phone</h3>
+
+          {% if company_settings.phone %}
+            <p>
+              <a href="tel:{{ company_settings.phone }}">
+                {{ company_settings.phone }}
+              </a>
+            </p>
+          {% else %}
+            <p>Phone details will be updated soon.</p>
+          {% endif %}
+        </article>
+
+        <article class="ar-contact-card">
+          <div class="ar-contact-icon">WA</div>
+
+          <h3>WhatsApp</h3>
+
+          {% if company_settings.whatsapp_url %}
+            <p>
+              Chat with us directly for a quick discussion about your
+              requirement.
+            </p>
+
+            <div class="ar-contact-button-wrap">
+              <a
+                class="ar-primary-button"
+                href="{{ company_settings.whatsapp_url }}"
+                target="_blank"
+                rel="noopener"
+              >
+                Open WhatsApp <span>→</span>
+              </a>
+            </div>
+          {% else %}
+            <p>WhatsApp details will be updated soon.</p>
+          {% endif %}
+        </article>
+
+        {% if company_settings.address %}
+        <article class="ar-contact-card">
+          <div class="ar-contact-icon">⌖</div>
+
+          <h3>Location</h3>
+
+          <p>
+            {{ company_settings.address|linebreaksbr }}
+          </p>
+
+          {% if company_settings.google_maps_url %}
+          <div class="ar-contact-button-wrap">
+            <a
+              class="ar-outline-button"
+              href="{{ company_settings.google_maps_url }}"
+              target="_blank"
+              rel="noopener"
+            >
+              Open Map
+            </a>
           </div>
-          {% endfor %}
-          <div class="field-full">
-            <button class="btn-primary" type="submit">Send Enquiry</button>
-          </div>
+          {% endif %}
+        </article>
+        {% endif %}
+
+        {% if company_settings.working_hours %}
+        <article class="ar-contact-card">
+          <div class="ar-contact-icon">◷</div>
+
+          <h3>Working Hours</h3>
+
+          <p>
+            {{ company_settings.working_hours|linebreaksbr }}
+          </p>
+        </article>
+        {% endif %}
+
+        <article class="ar-contact-card">
+          <div class="ar-contact-icon">WEB</div>
+
+          <h3>Website</h3>
+
+          <p>
+            <a href="https://ar-website-uw92.onrender.com/">
+              ar-website-uw92.onrender.com
+            </a>
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY FORM -->
+
+  <section class="ar-contact-section alt">
+    <div class="ar-container ar-contact-form-layout">
+
+      <aside class="ar-contact-form-intro">
+        <span class="ar-contact-eyebrow">
+          Free Initial Consultation
+        </span>
+
+        <h2>
+          Tell Us What You Need
+        </h2>
+
+        <p>
+          Add your basic details and explain your requirement. Your enquiry
+          will be saved securely in our system for review.
+        </p>
+
+        <div class="ar-contact-benefits">
+          <span>Clear requirement discussion</span>
+          <span>Professional guidance</span>
+          <span>Flexible and customised solutions</span>
+          <span>Transparent quotation process</span>
+          <span>Support for future improvements</span>
         </div>
-      </form>
-    </article>
-  </div>
-</section>
+      </aside>
+
+      <article class="ar-form-card">
+        <h2>Send an Enquiry</h2>
+
+        <p>
+          Complete the form below. Fields shown here are controlled by the
+          existing Django enquiry form.
+        </p>
+
+        <form method="post" novalidate>
+          {% csrf_token %}
+
+          <div class="ar-contact-form-grid">
+
+            {% for field in form %}
+            <div class="ar-contact-field {% if field.name == 'message' %}full{% endif %}">
+
+              <label for="{{ field.id_for_label }}">
+                {{ field.label }}
+                {% if field.field.required %}*{% endif %}
+              </label>
+
+              {{ field }}
+
+              {% if field.help_text %}
+                <small>{{ field.help_text }}</small>
+              {% endif %}
+
+              {% if field.errors %}
+                <small class="ar-form-error">
+                  {{ field.errors|striptags }}
+                </small>
+              {% endif %}
+
+            </div>
+            {% endfor %}
+
+            <div class="ar-contact-field full">
+              <button
+                class="ar-primary-button ar-submit-button"
+                type="submit"
+              >
+                Send Enquiry <span>→</span>
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+
+  <section class="ar-contact-section">
+    <div class="ar-container">
+
+      <div class="ar-contact-heading">
+        <span>Services</span>
+
+        <h2>
+          What Can You Contact Us About?
+        </h2>
+
+        <p>
+          Enquiries are welcome for all AR Solutions products and services.
+        </p>
+      </div>
+
+      <div class="ar-services-interest-grid">
+
+        <article class="ar-service-interest">
+          <strong>Website Development</strong>
+          <span>Business, corporate, service and e-commerce websites.</span>
+        </article>
+
+        <article class="ar-service-interest">
+          <strong>Portfolio Websites</strong>
+          <span>Personal, professional, company and project portfolios.</span>
+        </article>
+
+        <article class="ar-service-interest">
+          <strong>Software Development</strong>
+          <span>ERP, accounting, projects, sales, CRM and custom systems.</span>
+        </article>
+
+        <article class="ar-service-interest">
+          <strong>CV & Cover Letter</strong>
+          <span>ATS-friendly CVs and professional career documents.</span>
+        </article>
+
+        <article class="ar-service-interest">
+          <strong>IT Solutions</strong>
+          <span>Technical support, maintenance and business automation.</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CONTACT US -->
+
+  <section class="ar-contact-section alt">
+    <div class="ar-container">
+
+      <div class="ar-contact-heading">
+        <span>Why Contact AR Solutions</span>
+
+        <h2>
+          A Clear and Practical Approach
+        </h2>
+
+        <p>
+          We focus on understanding your requirement before recommending any
+          product, service or development approach.
+        </p>
+      </div>
+
+      <div class="ar-why-contact-grid">
+
+        <article class="ar-why-contact-card">
+          <h3>Free Initial Discussion</h3>
+          <p>
+            Explain your requirement before deciding on a package or project.
+          </p>
+        </article>
+
+        <article class="ar-why-contact-card">
+          <h3>Customised Recommendations</h3>
+          <p>
+            Suggestions are based on your actual goal, workflow and budget.
+          </p>
+        </article>
+
+        <article class="ar-why-contact-card">
+          <h3>Transparent Quotation</h3>
+          <p>
+            The quotation can be prepared according to the agreed project
+            scope.
+          </p>
+        </article>
+
+        <article class="ar-why-contact-card">
+          <h3>Professional Communication</h3>
+          <p>
+            Requirements, progress and expected results are explained clearly.
+          </p>
+        </article>
+
+        <article class="ar-why-contact-card">
+          <h3>Flexible Solutions</h3>
+          <p>
+            Standard services and customised solutions are both available.
+          </p>
+        </article>
+
+        <article class="ar-why-contact-card">
+          <h3>Long-Term Support</h3>
+          <p>
+            Future changes, improvements and support can be discussed as the
+            requirement grows.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+
+  <section class="ar-contact-section">
+    <div class="ar-container">
+
+      <div class="ar-contact-heading">
+        <span>Frequently Asked Questions</span>
+
+        <h2>
+          Before You Contact Us
+        </h2>
+
+        <p>
+          These answers explain the basic process for common enquiries.
+        </p>
+      </div>
+
+      <div class="ar-faq-grid">
+
+        <article class="ar-faq-card">
+          <h3>How long does a website take?</h3>
+          <p>
+            The timeline depends on the number of pages, design, content,
+            features and revision requirements.
+          </p>
+        </article>
+
+        <article class="ar-faq-card">
+          <h3>Can software be customised?</h3>
+          <p>
+            Yes. Software modules, workflows, user access and reports can be
+            planned according to the business requirement.
+          </p>
+        </article>
+
+        <article class="ar-faq-card">
+          <h3>Can I request only a CV or cover letter?</h3>
+          <p>
+            Yes. Career services can be requested separately without
+            purchasing another product or service.
+          </p>
+        </article>
+
+        <article class="ar-faq-card">
+          <h3>Do you provide support after delivery?</h3>
+          <p>
+            Support, updates and future improvements can be included according
+            to the project agreement.
+          </p>
+        </article>
+
+        <article class="ar-faq-card">
+          <h3>Can I request a custom quotation?</h3>
+          <p>
+            Yes. Quotations are prepared after reviewing the exact project
+            scope and required deliverables.
+          </p>
+        </article>
+
+        <article class="ar-faq-card">
+          <h3>Do you provide services outside the UAE?</h3>
+          <p>
+            Digital services can be discussed with customers in the UAE and
+            other locations, depending on the project.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+
+  <section class="ar-contact-cta-section">
+    <div class="ar-container">
+
+      <div class="ar-contact-cta">
+        <h2>
+          Ready to Start?
+        </h2>
+
+        <p>
+          Contact AR Solutions to discuss your website, portfolio, software,
+          CV, cover letter or IT support requirement.
+        </p>
+
+        <div class="ar-contact-cta-actions">
+
+          <a class="ar-primary-button" href="#top">
+            Send an Enquiry <span>→</span>
+          </a>
+
+          {% if company_settings.whatsapp_url %}
+          <a
+            class="ar-outline-button"
+            href="{{ company_settings.whatsapp_url }}"
+            target="_blank"
+            rel="noopener"
+          >
+            Chat on WhatsApp
+          </a>
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 {% endblock %}

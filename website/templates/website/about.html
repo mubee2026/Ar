@@ -1,6 +1,775 @@
 {% extends 'website/base.html' %}
-{% block title %}About AR Solutions | AR Solutions{% endblock %}
+
+{% block title %}
+About AR Solutions | Digital Solutions, Software, Websites & Career Services UAE
+{% endblock %}
+
+{% block meta_description %}
+Learn about AR Solutions, a digital solutions provider offering website development, portfolio websites, custom software, ERP systems, CV and cover letter writing, and IT solutions.
+{% endblock %}
+
+{% block og_title %}
+About AR Solutions | Complete Digital Solutions
+{% endblock %}
+
+{% block og_description %}
+AR Solutions provides professional websites, portfolio websites, custom business software, ERP systems, career documents and IT solutions for businesses and professionals.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-about-page {
+    background: #070707;
+    color: #ffffff;
+  }
+
+  .ar-about-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 105px 0 85px;
+    border-bottom: 1px solid rgba(218, 172, 48, 0.16);
+    background:
+      radial-gradient(
+        circle at 82% 18%,
+        rgba(218, 172, 48, 0.14),
+        transparent 34%
+      ),
+      linear-gradient(180deg, #090909, #050505);
+  }
+
+  .ar-about-hero::after {
+    content: "";
+    position: absolute;
+    top: -160px;
+    right: -140px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(218, 172, 48, 0.13);
+    border-radius: 50%;
+  }
+
+  .ar-about-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 930px;
+  }
+
+  .ar-about-eyebrow {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .ar-about-hero h1 {
+    margin: 0 0 24px;
+    max-width: 920px;
+    font-size: clamp(42px, 6vw, 75px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .ar-about-hero h1 span {
+    color: #d9aa35;
+  }
+
+  .ar-about-hero p {
+    max-width: 790px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.69);
+    font-size: 18px;
+    line-height: 1.82;
+  }
+
+  .ar-about-section {
+    padding: 90px 0;
+  }
+
+  .ar-about-section.alt {
+    border-top: 1px solid rgba(218, 172, 48, 0.12);
+    border-bottom: 1px solid rgba(218, 172, 48, 0.12);
+    background:
+      radial-gradient(
+        circle at 14% 25%,
+        rgba(218, 172, 48, 0.08),
+        transparent 30%
+      ),
+      #080808;
+  }
+
+  .ar-about-heading {
+    max-width: 810px;
+    margin-bottom: 42px;
+  }
+
+  .ar-about-heading span {
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .ar-about-heading h2 {
+    margin: 14px 0 15px;
+    font-size: clamp(31px, 4vw, 50px);
+    line-height: 1.14;
+  }
+
+  .ar-about-heading p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.78;
+  }
+
+  .ar-story-grid {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 55px;
+    align-items: center;
+  }
+
+  .ar-story-copy h2 {
+    margin: 12px 0 20px;
+    font-size: clamp(33px, 5vw, 54px);
+    line-height: 1.12;
+  }
+
+  .ar-story-copy p {
+    margin: 0 0 18px;
+    color: rgba(255, 255, 255, 0.67);
+    line-height: 1.82;
+  }
+
+  .ar-story-panel {
+    padding: 32px;
+    border: 1px solid rgba(218, 172, 48, 0.22);
+    border-radius: 22px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.012)
+      );
+  }
+
+  .ar-story-panel h3 {
+    margin: 0 0 20px;
+    color: #e3b53d;
+    font-size: 22px;
+  }
+
+  .ar-story-list {
+    display: grid;
+    gap: 13px;
+  }
+
+  .ar-story-list span {
+    position: relative;
+    padding: 14px 15px 14px 38px;
+    border: 1px solid rgba(218, 172, 48, 0.14);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.77);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .ar-story-list span::before {
+    content: "✓";
+    position: absolute;
+    left: 15px;
+    color: #d9aa35;
+    font-weight: 700;
+  }
+
+  .ar-mission-grid,
+  .ar-values-grid,
+  .ar-why-grid,
+  .ar-process-grid,
+  .ar-industries-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .ar-mission-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ar-values-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .ar-why-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ar-process-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .ar-industries-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .ar-about-card {
+    position: relative;
+    padding: 28px;
+    border: 1px solid rgba(218, 172, 48, 0.2);
+    border-radius: 20px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.043),
+        rgba(255, 255, 255, 0.012)
+      );
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .ar-about-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(229, 184, 61, 0.46);
+  }
+
+  .ar-about-card h3 {
+    margin: 0 0 12px;
+    color: #ffffff;
+    font-size: 21px;
+  }
+
+  .ar-about-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.75;
+  }
+
+  .ar-about-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 21px;
+    border: 1px solid rgba(218, 172, 48, 0.33);
+    border-radius: 15px;
+    color: #dfb13a;
+    background: rgba(218, 172, 48, 0.08);
+    font-weight: 700;
+  }
+
+  .ar-process-card {
+    padding: 28px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .ar-process-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(218, 172, 48, 0.42);
+    border-radius: 50%;
+    color: #e2b43d;
+    font-weight: 700;
+  }
+
+  .ar-process-card h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+  }
+
+  .ar-process-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.72;
+  }
+
+  .ar-industry-item {
+    padding: 21px 18px;
+    text-align: center;
+    border: 1px solid rgba(218, 172, 48, 0.16);
+    border-radius: 15px;
+    color: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.022);
+  }
+
+  .ar-about-cta-section {
+    padding: 85px 0;
+  }
+
+  .ar-about-cta {
+    padding: 56px 34px;
+    text-align: center;
+    border: 1px solid rgba(218, 172, 48, 0.27);
+    border-radius: 24px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(218, 172, 48, 0.12),
+        rgba(255, 255, 255, 0.02)
+      );
+  }
+
+  .ar-about-cta h2 {
+    margin: 0 0 15px;
+    font-size: clamp(31px, 4vw, 51px);
+  }
+
+  .ar-about-cta p {
+    max-width: 760px;
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, 0.67);
+    line-height: 1.76;
+  }
+
+  .ar-about-cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  @media (max-width: 1100px) {
+    .ar-values-grid,
+    .ar-process-grid,
+    .ar-industries-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ar-why-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 820px) {
+    .ar-story-grid,
+    .ar-mission-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .ar-about-hero {
+      padding: 78px 0 60px;
+    }
+
+    .ar-about-section,
+    .ar-about-cta-section {
+      padding: 62px 0;
+    }
+
+    .ar-values-grid,
+    .ar-why-grid,
+    .ar-process-grid,
+    .ar-industries-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ar-about-cta {
+      padding: 40px 20px;
+    }
+
+    .ar-about-cta-actions {
+      flex-direction: column;
+    }
+
+    .ar-about-cta-actions a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<main><section class="page-hero"><div class="container"><span class="eyebrow">ABOUT AR SOLUTIONS</span><h1>Practical software for stronger business operations.</h1><p class="hero-lead">AR Solutions develops professional, maintainable and configurable software products for growing companies.</p></div></section>
-<section class="section"><div class="container cards-3"><article class="card"><h3>Product Focus</h3><p>Business software designed around real operational requirements.</p></article><article class="card"><h3>Implementation</h3><p>Configuration, company setup, user training and workflow support.</p></article><article class="card"><h3>Long-Term Growth</h3><p>Updates, improvements and new products as customer requirements grow.</p></article></div></section></main>
+<main class="ar-about-page">
+
+  <!-- HERO -->
+
+  <section class="ar-about-hero">
+    <div class="ar-container">
+
+      <div class="ar-about-hero-content">
+        <span class="ar-about-eyebrow">
+          About AR Solutions
+        </span>
+
+        <h1>
+          Digital solutions created for
+          <span>real goals and real growth.</span>
+        </h1>
+
+        <p>
+          AR Solutions helps businesses and professionals build a strong
+          digital presence, improve daily operations and present themselves
+          professionally through websites, portfolios, custom software,
+          career services and IT solutions.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+
+  <section class="ar-about-section">
+    <div class="ar-container ar-story-grid">
+
+      <div class="ar-story-copy">
+        <span class="ar-about-eyebrow">
+          Who We Are
+        </span>
+
+        <h2>
+          One Partner for Your Digital Requirements
+        </h2>
+
+        <p>
+          AR Solutions was created to provide practical and professional
+          digital services without unnecessary complexity. We focus on
+          understanding the customer's real requirement before planning the
+          design, technology and final solution.
+        </p>
+
+        <p>
+          Whether the requirement is a business website, personal portfolio,
+          ERP system, accounting software, CV, cover letter or technical
+          support, our goal is to deliver a solution that is useful, clear
+          and suitable for long-term growth.
+        </p>
+      </div>
+
+      <div class="ar-story-panel">
+        <h3>Our Main Services</h3>
+
+        <div class="ar-story-list">
+          <span>Website Development</span>
+          <span>Portfolio Websites</span>
+          <span>Custom Software & ERP Systems</span>
+          <span>CV & Cover Letter Writing</span>
+          <span>IT Solutions & Technical Support</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MISSION AND VISION -->
+
+  <section class="ar-about-section alt">
+    <div class="ar-container">
+
+      <div class="ar-about-heading">
+        <span>Our Direction</span>
+
+        <h2>
+          Mission and Vision
+        </h2>
+
+        <p>
+          Our work is guided by a simple purpose: create digital solutions
+          that are professional, practical and valuable to the customer.
+        </p>
+      </div>
+
+      <div class="ar-mission-grid">
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">M</div>
+
+          <h3>Our Mission</h3>
+
+          <p>
+            To provide accessible, customised and dependable digital
+            solutions that help businesses improve operations and help
+            professionals present their skills with confidence.
+          </p>
+        </article>
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">V</div>
+
+          <h3>Our Vision</h3>
+
+          <p>
+            To build AR Solutions into a trusted digital solutions brand
+            recognised for practical innovation, professional delivery and
+            long-term customer relationships.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+
+  <section class="ar-about-section">
+    <div class="ar-container">
+
+      <div class="ar-about-heading">
+        <span>Core Values</span>
+
+        <h2>
+          Principles Behind Every Project
+        </h2>
+
+        <p>
+          These values guide how we communicate, develop, deliver and support
+          every solution.
+        </p>
+      </div>
+
+      <div class="ar-values-grid">
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">01</div>
+          <h3>Quality</h3>
+          <p>
+            We focus on clean design, reliable functionality and professional
+            presentation.
+          </p>
+        </article>
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">02</div>
+          <h3>Practicality</h3>
+          <p>
+            Every feature and service should solve a real requirement and
+            create meaningful value.
+          </p>
+        </article>
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">03</div>
+          <h3>Transparency</h3>
+          <p>
+            Requirements, scope, limitations and delivery expectations are
+            communicated clearly.
+          </p>
+        </article>
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">04</div>
+          <h3>Continuous Improvement</h3>
+          <p>
+            We keep learning, refining and improving our services and
+            technology.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+
+  <section class="ar-about-section alt">
+    <div class="ar-container">
+
+      <div class="ar-about-heading">
+        <span>Why Choose AR Solutions</span>
+
+        <h2>
+          Professional Service with a Personal Approach
+        </h2>
+
+        <p>
+          We combine careful planning, modern design and practical
+          development to create solutions based on individual requirements.
+        </p>
+      </div>
+
+      <div class="ar-why-grid">
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">◆</div>
+          <h3>Customised Solutions</h3>
+          <p>
+            Services and systems can be adjusted according to your business,
+            profession, goals and budget.
+          </p>
+        </article>
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">◈</div>
+          <h3>Modern Design</h3>
+          <p>
+            Clean, responsive and professional interfaces designed for
+            desktop and mobile users.
+          </p>
+        </article>
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">✓</div>
+          <h3>Clear Communication</h3>
+          <p>
+            Requirements and progress are explained clearly throughout the
+            project.
+          </p>
+        </article>
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">⚙</div>
+          <h3>Practical Development</h3>
+          <p>
+            We focus on useful functionality and workflows rather than
+            unnecessary complexity.
+          </p>
+        </article>
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">↗</div>
+          <h3>Scalable Approach</h3>
+          <p>
+            Websites and software can be expanded as requirements and
+            operations grow.
+          </p>
+        </article>
+
+        <article class="ar-about-card">
+          <div class="ar-about-icon">●</div>
+          <h3>Ongoing Support</h3>
+          <p>
+            We provide guidance and support for updates, improvements and
+            future requirements.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+
+  <section class="ar-about-section">
+    <div class="ar-container">
+
+      <div class="ar-about-heading">
+        <span>Our Process</span>
+
+        <h2>
+          From Requirement to Delivery
+        </h2>
+
+        <p>
+          A structured process helps ensure that every project remains clear,
+          organised and focused on the required result.
+        </p>
+      </div>
+
+      <div class="ar-process-grid">
+
+        <article class="ar-process-card">
+          <span class="ar-process-number">01</span>
+          <h3>Understand</h3>
+          <p>
+            We discuss your objective, audience, workflow and exact
+            requirement.
+          </p>
+        </article>
+
+        <article class="ar-process-card">
+          <span class="ar-process-number">02</span>
+          <h3>Plan</h3>
+          <p>
+            We define the structure, features, content and delivery approach.
+          </p>
+        </article>
+
+        <article class="ar-process-card">
+          <span class="ar-process-number">03</span>
+          <h3>Create</h3>
+          <p>
+            The website, software or career document is developed and
+            reviewed.
+          </p>
+        </article>
+
+        <article class="ar-process-card">
+          <span class="ar-process-number">04</span>
+          <h3>Deliver</h3>
+          <p>
+            Final checks are completed before delivery, launch and support.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+
+  <section class="ar-about-section alt">
+    <div class="ar-container">
+
+      <div class="ar-about-heading">
+        <span>Who We Serve</span>
+
+        <h2>
+          Solutions for Different Industries and Professionals
+        </h2>
+
+        <p>
+          Our services can be tailored to different sectors, operational
+          requirements and professional backgrounds.
+        </p>
+      </div>
+
+      <div class="ar-industries-grid">
+        <div class="ar-industry-item">Engineering</div>
+        <div class="ar-industry-item">Construction & MEP</div>
+        <div class="ar-industry-item">Technical Services</div>
+        <div class="ar-industry-item">Trading</div>
+        <div class="ar-industry-item">Retail</div>
+        <div class="ar-industry-item">Professional Services</div>
+        <div class="ar-industry-item">Freelancers</div>
+        <div class="ar-industry-item">Job Seekers</div>
+        <div class="ar-industry-item">Startups</div>
+        <div class="ar-industry-item">Small Businesses</div>
+        <div class="ar-industry-item">Project-Based Companies</div>
+        <div class="ar-industry-item">Custom Requirements</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+
+  <section class="ar-about-cta-section">
+    <div class="ar-container">
+
+      <div class="ar-about-cta">
+        <h2>
+          Let Us Build the Right Solution for You
+        </h2>
+
+        <p>
+          Share your idea, business challenge or professional requirement.
+          We will help you identify the most suitable website, portfolio,
+          software, career service or IT solution.
+        </p>
+
+        <div class="ar-about-cta-actions">
+          <a class="ar-primary-button" href="{% url 'contact' %}">
+            Contact AR Solutions <span>→</span>
+          </a>
+
+          <a class="ar-outline-button" href="{% url 'products' %}">
+            Explore Products & Services
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
 {% endblock %}

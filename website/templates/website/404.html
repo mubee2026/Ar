@@ -1,0 +1,108 @@
+{% extends 'website/base.html' %}
+
+{% block title %}
+Page Not Found | AR Solutions
+{% endblock %}
+
+{% block meta_description %}
+The page you requested could not be found on the AR Solutions website.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-error-page {
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    padding: 90px 0;
+    background:
+      radial-gradient(
+        circle at 50% 15%,
+        rgba(218, 172, 48, 0.12),
+        transparent 38%
+      ),
+      #070707;
+  }
+
+  .ar-error-card {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .ar-error-code {
+    margin: 0;
+    color: #d9aa35;
+    font-size: clamp(110px, 21vw, 240px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.07em;
+    text-shadow: 0 20px 55px rgba(218, 172, 48, 0.18);
+  }
+
+  .ar-error-card h1 {
+    margin: 28px 0 15px;
+    color: #ffffff;
+    font-size: clamp(32px, 5vw, 53px);
+  }
+
+  .ar-error-card p {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .ar-error-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .ar-error-page {
+      padding: 65px 0;
+    }
+
+    .ar-error-actions {
+      flex-direction: column;
+    }
+
+    .ar-error-actions a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="ar-error-page">
+  <div class="ar-container">
+
+    <section class="ar-error-card">
+      <div class="ar-error-code">404</div>
+
+      <h1>Page Not Found</h1>
+
+      <p>
+        The page you are looking for may have been moved, renamed or removed.
+        Check the address or use one of the options below.
+      </p>
+
+      <div class="ar-error-actions">
+        <a class="ar-primary-button" href="{% url 'home' %}">
+          Return to Home <span>→</span>
+        </a>
+
+        <a class="ar-outline-button" href="{% url 'contact' %}">
+          Contact Support
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+{% endblock %}

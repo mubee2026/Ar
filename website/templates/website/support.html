@@ -1,6 +1,799 @@
 {% extends 'website/base.html' %}
-{% block title %}Support | AR Solutions{% endblock %}
+
+{% block title %}
+Support | Website, Software, ERP & IT Support | AR Solutions
+{% endblock %}
+
+{% block meta_description %}
+Get support from AR Solutions for websites, portfolio websites, custom software, ERP systems, maintenance, updates, training and technical assistance.
+{% endblock %}
+
+{% block og_title %}
+AR Solutions Support | Websites, Software & IT Assistance
+{% endblock %}
+
+{% block og_description %}
+Professional support for websites, software, ERP systems, maintenance, updates, training and technical requirements.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ar-support-page {
+    background: #070707;
+    color: #ffffff;
+  }
+
+  .ar-support-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 105px 0 82px;
+    border-bottom: 1px solid rgba(218, 172, 48, 0.16);
+    background:
+      radial-gradient(
+        circle at 82% 18%,
+        rgba(218, 172, 48, 0.14),
+        transparent 34%
+      ),
+      linear-gradient(180deg, #090909, #050505);
+  }
+
+  .ar-support-hero::after {
+    content: "";
+    position: absolute;
+    top: -170px;
+    right: -140px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(218, 172, 48, 0.13);
+    border-radius: 50%;
+  }
+
+  .ar-support-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 920px;
+  }
+
+  .ar-support-eyebrow {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .ar-support-hero h1 {
+    max-width: 900px;
+    margin: 0 0 24px;
+    font-size: clamp(42px, 6vw, 75px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .ar-support-hero h1 span {
+    color: #d9aa35;
+  }
+
+  .ar-support-hero p {
+    max-width: 790px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.69);
+    font-size: 18px;
+    line-height: 1.82;
+  }
+
+  .ar-support-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+  }
+
+  .ar-support-section {
+    padding: 90px 0;
+  }
+
+  .ar-support-section.alt {
+    border-top: 1px solid rgba(218, 172, 48, 0.12);
+    border-bottom: 1px solid rgba(218, 172, 48, 0.12);
+    background:
+      radial-gradient(
+        circle at 15% 30%,
+        rgba(218, 172, 48, 0.08),
+        transparent 30%
+      ),
+      #080808;
+  }
+
+  .ar-support-heading {
+    max-width: 810px;
+    margin-bottom: 42px;
+  }
+
+  .ar-support-heading span {
+    color: #d9aa35;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .ar-support-heading h2 {
+    margin: 14px 0 14px;
+    font-size: clamp(31px, 4vw, 49px);
+    line-height: 1.14;
+  }
+
+  .ar-support-heading p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.76;
+  }
+
+  .ar-support-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .ar-support-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(218, 172, 48, 0.2);
+    border-radius: 20px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.012)
+      );
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .ar-support-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 26px;
+    width: 72px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #e0b33c,
+      transparent
+    );
+  }
+
+  .ar-support-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(229, 184, 61, 0.46);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.34);
+  }
+
+  .ar-support-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 21px;
+    border: 1px solid rgba(218, 172, 48, 0.34);
+    border-radius: 15px;
+    color: #e1b33b;
+    background: rgba(218, 172, 48, 0.08);
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .ar-support-card h3 {
+    margin: 0 0 12px;
+    font-size: 21px;
+  }
+
+  .ar-support-card p {
+    flex-grow: 1;
+    margin: 0 0 18px;
+    color: rgba(255, 255, 255, 0.64);
+    line-height: 1.72;
+  }
+
+  .ar-support-list {
+    display: grid;
+    gap: 9px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ar-support-list li {
+    position: relative;
+    padding-left: 20px;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .ar-support-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #d9aa35;
+    font-weight: 700;
+  }
+
+  .ar-support-process-grid,
+  .ar-support-plan-grid,
+  .ar-support-faq-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .ar-support-process-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .ar-support-plan-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ar-support-faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ar-support-process-card,
+  .ar-support-plan-card,
+  .ar-support-faq-card {
+    padding: 27px;
+    border: 1px solid rgba(218, 172, 48, 0.18);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.024);
+  }
+
+  .ar-support-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(218, 172, 48, 0.42);
+    border-radius: 50%;
+    color: #e2b43d;
+    font-weight: 700;
+  }
+
+  .ar-support-process-card h3,
+  .ar-support-plan-card h3,
+  .ar-support-faq-card h3 {
+    margin: 0 0 11px;
+    font-size: 20px;
+  }
+
+  .ar-support-process-card p,
+  .ar-support-plan-card p,
+  .ar-support-faq-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.63);
+    line-height: 1.72;
+  }
+
+  .ar-support-plan-card.featured {
+    border-color: rgba(229, 184, 61, 0.46);
+    background:
+      radial-gradient(
+        circle at 85% 10%,
+        rgba(218, 172, 48, 0.14),
+        transparent 38%
+      ),
+      rgba(255, 255, 255, 0.035);
+  }
+
+  .ar-support-plan-label {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 7px 10px;
+    border: 1px solid rgba(218, 172, 48, 0.3);
+    border-radius: 999px;
+    color: #e4b73d;
+    background: rgba(218, 172, 48, 0.08);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ar-support-cta-section {
+    padding: 85px 0;
+  }
+
+  .ar-support-cta {
+    padding: 56px 34px;
+    text-align: center;
+    border: 1px solid rgba(218, 172, 48, 0.27);
+    border-radius: 24px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(218, 172, 48, 0.12),
+        rgba(255, 255, 255, 0.02)
+      );
+  }
+
+  .ar-support-cta h2 {
+    margin: 0 0 15px;
+    font-size: clamp(31px, 4vw, 51px);
+  }
+
+  .ar-support-cta p {
+    max-width: 760px;
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, 0.67);
+    line-height: 1.76;
+  }
+
+  .ar-support-cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  @media (max-width: 1050px) {
+    .ar-support-grid,
+    .ar-support-plan-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ar-support-process-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 680px) {
+    .ar-support-hero {
+      padding: 78px 0 60px;
+    }
+
+    .ar-support-section,
+    .ar-support-cta-section {
+      padding: 62px 0;
+    }
+
+    .ar-support-grid,
+    .ar-support-process-grid,
+    .ar-support-plan-grid,
+    .ar-support-faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ar-support-hero-actions,
+    .ar-support-cta-actions {
+      flex-direction: column;
+    }
+
+    .ar-support-hero-actions a,
+    .ar-support-cta-actions a {
+      width: 100%;
+      text-align: center;
+    }
+
+    .ar-support-cta {
+      padding: 40px 20px;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<main><section class="page-hero"><div class="container"><span class="eyebrow">CUSTOMER SUPPORT</span><h1>Support through implementation and daily use.</h1></div></section>
-<section class="section"><div class="container cards-3"><article class="card"><h3>Installation</h3><p>Local, server or cloud deployment support.</p></article><article class="card"><h3>Training</h3><p>Guidance for accounts, projects, purchase and inventory users.</p></article><article class="card"><h3>Updates</h3><p>Bug fixes, product improvements and optional feature upgrades.</p></article></div></section></main>
+<main class="ar-support-page">
+
+  <section class="ar-support-hero">
+    <div class="ar-container">
+
+      <div class="ar-support-hero-content">
+        <span class="ar-support-eyebrow">
+          Customer Support
+        </span>
+
+        <h1>
+          Reliable support for your
+          <span>digital solutions.</span>
+        </h1>
+
+        <p>
+          AR Solutions provides support for websites, portfolio websites,
+          custom software, ERP systems, technical requirements, updates,
+          training and ongoing improvements.
+        </p>
+
+        <div class="ar-support-hero-actions">
+          <a class="ar-primary-button" href="{% url 'contact' %}">
+            Request Support <span>→</span>
+          </a>
+
+          {% if company_settings.whatsapp_url %}
+          <a
+            class="ar-outline-button"
+            href="{{ company_settings.whatsapp_url }}"
+            target="_blank"
+            rel="noopener"
+          >
+            Chat on WhatsApp
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="ar-support-section">
+    <div class="ar-container">
+
+      <div class="ar-support-heading">
+        <span>Support Services</span>
+
+        <h2>
+          Support Throughout Setup, Delivery and Daily Use
+        </h2>
+
+        <p>
+          Support can be provided based on the product, project agreement and
+          type of assistance required.
+        </p>
+      </div>
+
+      <div class="ar-support-grid">
+
+        <article class="ar-support-card">
+          <div class="ar-support-icon">WEB</div>
+
+          <h3>Website Support</h3>
+
+          <p>
+            Support for business websites, portfolio websites and other web
+            projects delivered by AR Solutions.
+          </p>
+
+          <ul class="ar-support-list">
+            <li>Content and image updates</li>
+            <li>Page and layout corrections</li>
+            <li>Responsive design fixes</li>
+            <li>Form and link checking</li>
+          </ul>
+        </article>
+
+        <article class="ar-support-card">
+          <div class="ar-support-icon">DEV</div>
+
+          <h3>Software Support</h3>
+
+          <p>
+            Technical assistance for custom software, ERP systems and business
+            management applications.
+          </p>
+
+          <ul class="ar-support-list">
+            <li>Bug investigation and fixes</li>
+            <li>User and permission support</li>
+            <li>Workflow assistance</li>
+            <li>Report and document support</li>
+          </ul>
+        </article>
+
+        <article class="ar-support-card">
+          <div class="ar-support-icon">SET</div>
+
+          <h3>Installation & Deployment</h3>
+
+          <p>
+            Assistance with local, server or cloud deployment depending on the
+            selected solution.
+          </p>
+
+          <ul class="ar-support-list">
+            <li>Local installation support</li>
+            <li>Server configuration guidance</li>
+            <li>Cloud deployment assistance</li>
+            <li>Initial setup and testing</li>
+          </ul>
+        </article>
+
+        <article class="ar-support-card">
+          <div class="ar-support-icon">TRN</div>
+
+          <h3>Training & Guidance</h3>
+
+          <p>
+            Guidance for users to understand the system, pages, modules and
+            normal daily operations.
+          </p>
+
+          <ul class="ar-support-list">
+            <li>Admin panel guidance</li>
+            <li>Software module training</li>
+            <li>Workflow explanation</li>
+            <li>Basic user assistance</li>
+          </ul>
+        </article>
+
+        <article class="ar-support-card">
+          <div class="ar-support-icon">UP</div>
+
+          <h3>Updates & Improvements</h3>
+
+          <p>
+            Existing websites and systems can be improved as requirements
+            change or grow.
+          </p>
+
+          <ul class="ar-support-list">
+            <li>Feature improvements</li>
+            <li>New pages or modules</li>
+            <li>Design updates</li>
+            <li>Performance improvements</li>
+          </ul>
+        </article>
+
+        <article class="ar-support-card">
+          <div class="ar-support-icon">IT</div>
+
+          <h3>Technical Assistance</h3>
+
+          <p>
+            Practical support for selected IT, website, software and digital
+            workflow requirements.
+          </p>
+
+          <ul class="ar-support-list">
+            <li>Basic technical consultation</li>
+            <li>Business automation guidance</li>
+            <li>System maintenance support</li>
+            <li>Digital solution recommendations</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="ar-support-section alt">
+    <div class="ar-container">
+
+      <div class="ar-support-heading">
+        <span>Support Process</span>
+
+        <h2>
+          How Support Requests Are Handled
+        </h2>
+
+        <p>
+          A clear process helps us understand the issue and provide suitable
+          assistance.
+        </p>
+      </div>
+
+      <div class="ar-support-process-grid">
+
+        <article class="ar-support-process-card">
+          <span class="ar-support-number">01</span>
+          <h3>Submit Request</h3>
+          <p>
+            Explain the issue, required change or type of support needed.
+          </p>
+        </article>
+
+        <article class="ar-support-process-card">
+          <span class="ar-support-number">02</span>
+          <h3>Review</h3>
+          <p>
+            We review the request, project details and available information.
+          </p>
+        </article>
+
+        <article class="ar-support-process-card">
+          <span class="ar-support-number">03</span>
+          <h3>Plan the Solution</h3>
+          <p>
+            The required action, expected time and applicable cost are
+            identified.
+          </p>
+        </article>
+
+        <article class="ar-support-process-card">
+          <span class="ar-support-number">04</span>
+          <h3>Resolve & Confirm</h3>
+          <p>
+            The support task is completed, tested and confirmed with the
+            customer.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="ar-support-section">
+    <div class="ar-container">
+
+      <div class="ar-support-heading">
+        <span>Support Options</span>
+
+        <h2>
+          Flexible Support Based on Your Requirement
+        </h2>
+
+        <p>
+          Support can be arranged as a one-time task, project support or an
+          ongoing maintenance arrangement.
+        </p>
+      </div>
+
+      <div class="ar-support-plan-grid">
+
+        <article class="ar-support-plan-card">
+          <span class="ar-support-plan-label">
+            One-Time
+          </span>
+
+          <h3>Single Support Request</h3>
+
+          <p>
+            Suitable for a specific correction, update, technical issue or
+            small improvement.
+          </p>
+        </article>
+
+        <article class="ar-support-plan-card featured">
+          <span class="ar-support-plan-label">
+            Ongoing
+          </span>
+
+          <h3>Maintenance Support</h3>
+
+          <p>
+            Suitable for customers who need regular website, software or
+            system support.
+          </p>
+        </article>
+
+        <article class="ar-support-plan-card">
+          <span class="ar-support-plan-label">
+            Project
+          </span>
+
+          <h3>Implementation Support</h3>
+
+          <p>
+            Setup, configuration, deployment, user guidance and support during
+            implementation.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="ar-support-section alt">
+    <div class="ar-container">
+
+      <div class="ar-support-heading">
+        <span>Frequently Asked Questions</span>
+
+        <h2>
+          Common Support Questions
+        </h2>
+
+        <p>
+          Support availability and scope depend on the project and agreed
+          service terms.
+        </p>
+      </div>
+
+      <div class="ar-support-faq-grid">
+
+        <article class="ar-support-faq-card">
+          <h3>Is support included after delivery?</h3>
+
+          <p>
+            Initial support may be included based on the project agreement.
+            Extended or ongoing support can be arranged separately.
+          </p>
+        </article>
+
+        <article class="ar-support-faq-card">
+          <h3>Can new features be added later?</h3>
+
+          <p>
+            Yes. Websites and software can be expanded when new requirements
+            arise.
+          </p>
+        </article>
+
+        <article class="ar-support-faq-card">
+          <h3>Do you provide user training?</h3>
+
+          <p>
+            Basic or detailed training can be provided depending on the
+            product and agreement.
+          </p>
+        </article>
+
+        <article class="ar-support-faq-card">
+          <h3>Can you support a website or system created elsewhere?</h3>
+
+          <p>
+            It may be possible after reviewing the technology, files, access
+            and current condition of the project.
+          </p>
+        </article>
+
+        <article class="ar-support-faq-card">
+          <h3>How quickly will a request be handled?</h3>
+
+          <p>
+            Response and resolution time depend on the urgency, complexity
+            and current support workload.
+          </p>
+        </article>
+
+        <article class="ar-support-faq-card">
+          <h3>Is support free?</h3>
+
+          <p>
+            Support included in an existing agreement may be free. Additional
+            work may require a separate quotation.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="ar-support-cta-section">
+    <div class="ar-container">
+
+      <div class="ar-support-cta">
+        <h2>
+          Need Help with a Website, Software or IT Solution?
+        </h2>
+
+        <p>
+          Describe the issue or required assistance. We will review the request
+          and guide you on the next step.
+        </p>
+
+        <div class="ar-support-cta-actions">
+
+          <a class="ar-primary-button" href="{% url 'contact' %}">
+            Submit Support Request <span>→</span>
+          </a>
+
+          {% if company_settings.whatsapp_url %}
+          <a
+            class="ar-outline-button"
+            href="{{ company_settings.whatsapp_url }}"
+            target="_blank"
+            rel="noopener"
+          >
+            Contact on WhatsApp
+          </a>
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
 {% endblock %}
