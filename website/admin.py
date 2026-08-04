@@ -1,6 +1,12 @@
 from django.contrib import admin
-from .models import Product, PricingPlan, DemoRequest, ContactEnquiry, CompanySettings
-
+from .models import (
+    Product,
+    PricingPlan,
+    DemoRequest,
+    ContactEnquiry,
+    CompanySettings,
+    ProjectShowcase,
+)
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ("name", "is_featured", "is_active", "sort_order")
@@ -56,3 +62,34 @@ class CompanySettingsAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+@admin.register(ProjectShowcase)
+class ProjectShowcaseAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "category",
+        "status",
+        "client_name",
+        "is_featured",
+        "is_active",
+        "sort_order",
+    )
+
+    list_filter = (
+        "category",
+        "status",
+        "is_featured",
+        "is_active",
+    )
+
+    search_fields = (
+        "title",
+        "client_name",
+        "short_description",
+    )
+
+    list_editable = (
+        "status",
+        "is_featured",
+        "is_active",
+        "sort_order",
+    )

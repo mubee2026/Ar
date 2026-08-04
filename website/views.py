@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 
 from .forms import ContactEnquiryForm, DemoRequestForm
-from .models import PricingPlan, Product
+from .models import PricingPlan, Product,ProjectShowcase
 
 
 def home(request):
@@ -12,7 +12,35 @@ def home(request):
 
 def products(request):
     items = Product.objects.filter(is_active=True)
-    return render(request, "website/products.html", {"products": items})
+
+    showcases = ProjectShowcase.objects.filter(
+        is_active=True,
+    )
+
+    context = {
+        "products": items,
+        "software_projects": showcases.filter(
+            category="software",
+        ),
+        "website_projects": showcases.filter(
+            category="website",
+        ),
+        "portfolio_projects": showcases.filter(
+            category="portfolio",
+        ),
+        "career_projects": showcases.filter(
+            category="career",
+        ),
+        "it_projects": showcases.filter(
+            category="it",
+        ),
+    }
+
+    return render(
+        request,
+        "website/products.html",
+        context,
+    )
 
 
 def engineering_erp(request):

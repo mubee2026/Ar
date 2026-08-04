@@ -153,3 +153,65 @@ class CompanySettings(models.Model):
     def whatsapp_url(self):
         number = "".join(ch for ch in (self.whatsapp or "") if ch.isdigit())
         return f"https://wa.me/{number}" if number else ""
+class ProjectShowcase(models.Model):
+    CATEGORY_CHOICES = [
+        ("software", "Software Product"),
+        ("website", "Website Development"),
+        ("portfolio", "Portfolio Website"),
+        ("career", "Career Service"),
+        ("it", "IT Solution"),
+    ]
+
+    STATUS_CHOICES = [
+        ("completed", "Completed"),
+        ("in_progress", "In Progress"),
+        ("coming_soon", "Coming Soon"),
+    ]
+
+    title = models.CharField(max_length=160)
+
+    category = models.CharField(
+        max_length=20,
+        choices=CATEGORY_CHOICES,
+    )
+
+    short_description = models.CharField(
+        max_length=300,
+    )
+
+    client_name = models.CharField(
+        max_length=160,
+        blank=True,
+        help_text="Leave blank when the client name should remain private.",
+    )
+
+    image_url = models.URLField(
+        blank=True,
+        help_text="Optional public screenshot or image URL.",
+    )
+
+    project_url = models.URLField(
+        blank=True,
+        help_text="Optional live project URL.",
+    )
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="completed",
+    )
+
+    is_featured = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    completed_date = models.DateField(blank=True, null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["sort_order", "-created_at"]
+        verbose_name = "Project Showcase"
+        verbose_name_plural = "Project Showcase"
+
+    def __str__(self):
+        return self.title

@@ -357,6 +357,90 @@ Complete digital solutions including websites, portfolio websites, custom busine
       padding: 40px 20px;
     }
   }
+  .ar-recent-work-section {
+  border-top: 1px solid rgba(218, 172, 48, 0.12);
+  background: #080808;
+}
+
+.ar-showcase-category {
+  margin-top: 48px;
+}
+
+.ar-showcase-category:first-of-type {
+  margin-top: 0;
+}
+
+.ar-showcase-category > h3 {
+  margin: 0 0 22px;
+  color: #ffffff;
+  font-size: 26px;
+}
+
+.ar-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.ar-showcase-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid rgba(218, 172, 48, 0.2);
+  border-radius: 19px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.ar-showcase-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 20px;
+  object-fit: cover;
+  border-radius: 13px;
+}
+
+.ar-showcase-label {
+  align-self: flex-start;
+  margin-bottom: 13px;
+  padding: 6px 10px;
+  border: 1px solid rgba(218, 172, 48, 0.28);
+  border-radius: 999px;
+  color: #e1b33b;
+  background: rgba(218, 172, 48, 0.07);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ar-showcase-card h4 {
+  margin: 0 0 10px;
+  font-size: 21px;
+}
+
+.ar-showcase-card p {
+  flex-grow: 1;
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.64);
+  line-height: 1.7;
+}
+
+.ar-showcase-card small {
+  display: block;
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+@media (max-width: 950px) {
+  .ar-showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .ar-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 {% endblock %}
 
@@ -588,7 +672,161 @@ Complete digital solutions including websites, portfolio websites, custom busine
       </div>
     </div>
   </section>
+{% if software_projects or website_projects or portfolio_projects or career_projects or it_projects %}
+<section class="ar-products-section ar-recent-work-section">
+  <div class="ar-container">
 
+    <div class="ar-products-heading">
+      <span>Recent Work</span>
+
+      <h2>Products and Client Projects</h2>
+
+      <p>
+        Selected software products, websites, portfolios and digital
+        solutions recently developed by AR Solutions.
+      </p>
+    </div>
+
+    {% if software_projects %}
+    <div class="ar-showcase-category">
+      <h3>Software Products</h3>
+
+      <div class="ar-showcase-grid">
+        {% for project in software_projects %}
+        <article class="ar-showcase-card">
+
+          {% if project.image_url %}
+          <img
+            src="{{ project.image_url }}"
+            alt="{{ project.title }}"
+            loading="lazy"
+          >
+          {% endif %}
+
+          <span class="ar-showcase-label">
+            {{ project.get_status_display }}
+          </span>
+
+          <h4>{{ project.title }}</h4>
+
+          <p>{{ project.short_description }}</p>
+
+          {% if project.client_name %}
+          <small>Client: {{ project.client_name }}</small>
+          {% endif %}
+
+          {% if project.project_url %}
+          <a
+            class="ar-outline-button"
+            href="{{ project.project_url }}"
+            target="_blank"
+            rel="noopener"
+          >
+            View Project
+          </a>
+          {% endif %}
+
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+
+    {% if website_projects %}
+    <div class="ar-showcase-category">
+      <h3>Website Development Projects</h3>
+
+      <div class="ar-showcase-grid">
+        {% for project in website_projects %}
+        <article class="ar-showcase-card">
+
+          {% if project.image_url %}
+          <img
+            src="{{ project.image_url }}"
+            alt="{{ project.title }}"
+            loading="lazy"
+          >
+          {% endif %}
+
+          <span class="ar-showcase-label">
+            {{ project.get_status_display }}
+          </span>
+
+          <h4>{{ project.title }}</h4>
+
+          <p>{{ project.short_description }}</p>
+
+          {% if project.client_name %}
+          <small>Client: {{ project.client_name }}</small>
+          {% endif %}
+
+          {% if project.project_url %}
+          <a
+            class="ar-outline-button"
+            href="{{ project.project_url }}"
+            target="_blank"
+            rel="noopener"
+          >
+            View Website
+          </a>
+          {% endif %}
+
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+
+    {% if portfolio_projects %}
+    <div class="ar-showcase-category">
+      <h3>Portfolio Website Projects</h3>
+
+      <div class="ar-showcase-grid">
+        {% for project in portfolio_projects %}
+        <article class="ar-showcase-card">
+
+          {% if project.image_url %}
+          <img
+            src="{{ project.image_url }}"
+            alt="{{ project.title }}"
+            loading="lazy"
+          >
+          {% endif %}
+
+          <span class="ar-showcase-label">
+            {{ project.get_status_display }}
+          </span>
+
+          <h4>{{ project.title }}</h4>
+
+          <p>{{ project.short_description }}</p>
+
+          {% if project.client_name %}
+          <small>Client: {{ project.client_name }}</small>
+          {% endif %}
+
+          {% if project.project_url %}
+          <a
+            class="ar-outline-button"
+            href="{{ project.project_url }}"
+            target="_blank"
+            rel="noopener"
+          >
+            View Portfolio
+          </a>
+          {% endif %}
+
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endif %}
   <section class="ar-products-note-section">
     <div class="ar-container ar-products-note">
 
