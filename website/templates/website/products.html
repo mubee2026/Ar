@@ -441,6 +441,372 @@ Complete digital solutions including websites, portfolio websites, custom busine
     grid-template-columns: 1fr;
   }
 }
+.ar-recent-work-section {
+  border-top: 1px solid rgba(218, 172, 48, 0.12);
+  background: #080808;
+}
+
+.ar-showcase-category {
+  margin-top: 58px;
+}
+
+.ar-showcase-category:first-of-type {
+  margin-top: 0;
+}
+
+.ar-showcase-category > h3 {
+  margin: 0 0 24px;
+  color: #ffffff;
+  font-size: clamp(25px, 3vw, 34px);
+}
+
+.ar-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.ar-showcase-card {
+  overflow: hidden;
+  border: 1px solid rgba(218, 172, 48, 0.2);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.025);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.ar-showcase-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(218, 172, 48, 0.45);
+}
+
+.ar-showcase-card.featured {
+  border-color: rgba(218, 172, 48, 0.42);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(218, 172, 48, 0.07),
+      rgba(255, 255, 255, 0.018)
+    );
+}
+
+.ar-showcase-cover {
+  position: relative;
+  min-height: 265px;
+  overflow: hidden;
+  background: #111111;
+}
+
+.ar-showcase-cover img {
+  display: block;
+  width: 100%;
+  height: 265px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.ar-showcase-card:hover .ar-showcase-cover img {
+  transform: scale(1.025);
+}
+
+.ar-showcase-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 265px;
+  color: #d9aa35;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(218, 172, 48, 0.12),
+      transparent 48%
+    ),
+    #0d0d0d;
+}
+
+.ar-showcase-placeholder span {
+  font-size: 54px;
+  font-weight: 800;
+}
+
+.ar-showcase-placeholder small {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.ar-featured-project-label {
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: #080808;
+  background: #d9aa35;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ar-showcase-card-content {
+  padding: 26px;
+}
+
+.ar-showcase-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 12px;
+}
+
+.ar-showcase-label {
+  padding: 6px 10px;
+  border: 1px solid rgba(218, 172, 48, 0.3);
+  border-radius: 999px;
+  color: #e2b43d;
+  background: rgba(218, 172, 48, 0.07);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ar-showcase-card h4 {
+  margin: 0 0 12px;
+  font-size: 25px;
+}
+
+.ar-showcase-card p {
+  margin: 0 0 17px;
+  color: rgba(255, 255, 255, 0.64);
+  line-height: 1.75;
+}
+
+.ar-showcase-client {
+  display: block;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.ar-project-media-summary {
+  margin: 18px 0;
+  color: #d9aa35;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ar-showcase-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ar-showcase-card-actions button {
+  cursor: pointer;
+}
+
+
+/* Gallery popup */
+
+.ar-project-lightbox {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.ar-project-lightbox.is-open {
+  display: flex;
+}
+
+.ar-project-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.ar-project-lightbox-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  padding: 28px;
+  border: 1px solid rgba(218, 172, 48, 0.3);
+  border-radius: 24px;
+  background: #0b0b0b;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.65);
+}
+
+.ar-project-lightbox-close {
+  position: absolute;
+  top: 17px;
+  right: 19px;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.ar-project-lightbox-header {
+  padding-right: 55px;
+  margin-bottom: 22px;
+}
+
+.ar-project-lightbox-header > span {
+  color: #d9aa35;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ar-project-lightbox-header h2 {
+  margin: 8px 0 7px;
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+.ar-project-lightbox-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.65;
+}
+
+.ar-project-lightbox-viewer {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) 52px;
+  gap: 14px;
+  align-items: center;
+}
+
+.ar-gallery-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+  overflow: hidden;
+  border-radius: 17px;
+  background: #030303;
+}
+
+.ar-gallery-stage img,
+.ar-gallery-stage video {
+  display: block;
+  max-width: 100%;
+  max-height: 68vh;
+  object-fit: contain;
+}
+
+.ar-gallery-arrow {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(218, 172, 48, 0.28);
+  border-radius: 50%;
+  color: #d9aa35;
+  background: rgba(218, 172, 48, 0.06);
+  cursor: pointer;
+  font-size: 34px;
+}
+
+.ar-gallery-footer {
+  margin-top: 19px;
+}
+
+#arGalleryCounter {
+  display: block;
+  margin-bottom: 13px;
+  color: rgba(255, 255, 255, 0.54);
+  text-align: center;
+  font-size: 13px;
+}
+
+.ar-gallery-thumbnails {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.ar-gallery-thumbnail {
+  flex: 0 0 88px;
+  height: 62px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 9px;
+  background: #111111;
+  cursor: pointer;
+}
+
+.ar-gallery-thumbnail.active {
+  border-color: #d9aa35;
+}
+
+.ar-gallery-thumbnail img,
+.ar-gallery-thumbnail video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ar-gallery-video-thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #d9aa35;
+  font-size: 23px;
+}
+
+body.ar-gallery-open {
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  .ar-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ar-project-lightbox {
+    padding: 10px;
+  }
+
+  .ar-project-lightbox-dialog {
+    padding: 20px 14px;
+  }
+
+  .ar-project-lightbox-viewer {
+    grid-template-columns: 1fr;
+  }
+
+  .ar-gallery-arrow {
+    position: absolute;
+    z-index: 2;
+  }
+
+  .ar-gallery-prev {
+    left: 22px;
+  }
+
+  .ar-gallery-next {
+    right: 22px;
+  }
+
+  .ar-gallery-stage {
+    min-height: 330px;
+  }
+}
 </style>
 {% endblock %}
 
@@ -677,15 +1043,14 @@ Complete digital solutions including websites, portfolio websites, custom busine
   <div class="ar-container">
 
     <div class="ar-products-heading">
-      <span>Recent Work</span>
-
+      <span>Selected Work</span>
       <h2>Products and Client Projects</h2>
-
       <p>
-        Selected software products, websites, portfolios and digital
-        solutions recently developed by AR Solutions.
+        Explore software products, company websites, professional portfolios
+        and other selected work developed by AR Solutions.
       </p>
     </div>
+
 
     {% if software_projects %}
     <div class="ar-showcase-category">
@@ -693,40 +1058,7 @@ Complete digital solutions including websites, portfolio websites, custom busine
 
       <div class="ar-showcase-grid">
         {% for project in software_projects %}
-        <article class="ar-showcase-card">
-
-          {% if project.image_url %}
-          <img
-            src="{{ project.image_url }}"
-            alt="{{ project.title }}"
-            loading="lazy"
-          >
-          {% endif %}
-
-          <span class="ar-showcase-label">
-            {{ project.get_status_display }}
-          </span>
-
-          <h4>{{ project.title }}</h4>
-
-          <p>{{ project.short_description }}</p>
-
-          {% if project.client_name %}
-          <small>Client: {{ project.client_name }}</small>
-          {% endif %}
-
-          {% if project.project_url %}
-          <a
-            class="ar-outline-button"
-            href="{{ project.project_url }}"
-            target="_blank"
-            rel="noopener"
-          >
-            View Project
-          </a>
-          {% endif %}
-
-        </article>
+          {% include "website/includes/project_showcase_card.html" %}
         {% endfor %}
       </div>
     </div>
@@ -739,40 +1071,7 @@ Complete digital solutions including websites, portfolio websites, custom busine
 
       <div class="ar-showcase-grid">
         {% for project in website_projects %}
-        <article class="ar-showcase-card">
-
-          {% if project.image_url %}
-          <img
-            src="{{ project.image_url }}"
-            alt="{{ project.title }}"
-            loading="lazy"
-          >
-          {% endif %}
-
-          <span class="ar-showcase-label">
-            {{ project.get_status_display }}
-          </span>
-
-          <h4>{{ project.title }}</h4>
-
-          <p>{{ project.short_description }}</p>
-
-          {% if project.client_name %}
-          <small>Client: {{ project.client_name }}</small>
-          {% endif %}
-
-          {% if project.project_url %}
-          <a
-            class="ar-outline-button"
-            href="{{ project.project_url }}"
-            target="_blank"
-            rel="noopener"
-          >
-            View Website
-          </a>
-          {% endif %}
-
-        </article>
+          {% include "website/includes/project_showcase_card.html" %}
         {% endfor %}
       </div>
     </div>
@@ -785,40 +1084,33 @@ Complete digital solutions including websites, portfolio websites, custom busine
 
       <div class="ar-showcase-grid">
         {% for project in portfolio_projects %}
-        <article class="ar-showcase-card">
+          {% include "website/includes/project_showcase_card.html" %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
 
-          {% if project.image_url %}
-          <img
-            src="{{ project.image_url }}"
-            alt="{{ project.title }}"
-            loading="lazy"
-          >
-          {% endif %}
 
-          <span class="ar-showcase-label">
-            {{ project.get_status_display }}
-          </span>
+    {% if career_projects %}
+    <div class="ar-showcase-category">
+      <h3>Career Service Projects</h3>
 
-          <h4>{{ project.title }}</h4>
+      <div class="ar-showcase-grid">
+        {% for project in career_projects %}
+          {% include "website/includes/project_showcase_card.html" %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
 
-          <p>{{ project.short_description }}</p>
 
-          {% if project.client_name %}
-          <small>Client: {{ project.client_name }}</small>
-          {% endif %}
+    {% if it_projects %}
+    <div class="ar-showcase-category">
+      <h3>IT Solution Projects</h3>
 
-          {% if project.project_url %}
-          <a
-            class="ar-outline-button"
-            href="{{ project.project_url }}"
-            target="_blank"
-            rel="noopener"
-          >
-            View Portfolio
-          </a>
-          {% endif %}
-
-        </article>
+      <div class="ar-showcase-grid">
+        {% for project in it_projects %}
+          {% include "website/includes/project_showcase_card.html" %}
         {% endfor %}
       </div>
     </div>
@@ -827,6 +1119,67 @@ Complete digital solutions including websites, portfolio websites, custom busine
   </div>
 </section>
 {% endif %}
+
+
+<div
+  class="ar-project-lightbox"
+  id="arProjectLightbox"
+  aria-hidden="true"
+>
+  <div class="ar-project-lightbox-backdrop"></div>
+
+  <div
+    class="ar-project-lightbox-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="arLightboxTitle"
+  >
+    <button
+      type="button"
+      class="ar-project-lightbox-close"
+      aria-label="Close gallery"
+    >
+      ×
+    </button>
+
+    <div class="ar-project-lightbox-header">
+      <span>Project Showcase</span>
+      <h2 id="arLightboxTitle">Project Gallery</h2>
+      <p id="arLightboxDescription"></p>
+    </div>
+
+    <div class="ar-project-lightbox-viewer">
+
+      <button
+        type="button"
+        class="ar-gallery-arrow ar-gallery-prev"
+        aria-label="Previous media"
+      >
+        ‹
+      </button>
+
+      <div class="ar-gallery-stage" id="arGalleryStage"></div>
+
+      <button
+        type="button"
+        class="ar-gallery-arrow ar-gallery-next"
+        aria-label="Next media"
+      >
+        ›
+      </button>
+
+    </div>
+
+    <div class="ar-gallery-footer">
+      <span id="arGalleryCounter"></span>
+
+      <div
+        class="ar-gallery-thumbnails"
+        id="arGalleryThumbnails"
+      ></div>
+    </div>
+  </div>
+</div>
   <section class="ar-products-note-section">
     <div class="ar-container ar-products-note">
 
@@ -896,4 +1249,218 @@ Complete digital solutions including websites, portfolio websites, custom busine
   </section>
 
 </main>
+{% endblock %}
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const lightbox = document.getElementById("arProjectLightbox");
+
+  if (!lightbox) {
+    return;
+  }
+
+  const titleElement = document.getElementById("arLightboxTitle");
+  const descriptionElement = document.getElementById(
+    "arLightboxDescription"
+  );
+  const stage = document.getElementById("arGalleryStage");
+  const thumbnails = document.getElementById(
+    "arGalleryThumbnails"
+  );
+  const counter = document.getElementById("arGalleryCounter");
+
+  const closeButton = lightbox.querySelector(
+    ".ar-project-lightbox-close"
+  );
+  const backdrop = lightbox.querySelector(
+    ".ar-project-lightbox-backdrop"
+  );
+  const previousButton = lightbox.querySelector(
+    ".ar-gallery-prev"
+  );
+  const nextButton = lightbox.querySelector(
+    ".ar-gallery-next"
+  );
+
+  let mediaItems = [];
+  let currentIndex = 0;
+
+
+  function createMainMedia(item) {
+    stage.innerHTML = "";
+
+    if (item.type === "video") {
+      const video = document.createElement("video");
+      video.src = item.url;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      stage.appendChild(video);
+      return;
+    }
+
+    const image = document.createElement("img");
+    image.src = item.url;
+    image.alt = item.title || "Project screenshot";
+    stage.appendChild(image);
+  }
+
+
+  function createThumbnails() {
+    thumbnails.innerHTML = "";
+
+    mediaItems.forEach(function (item, index) {
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.className = "ar-gallery-thumbnail";
+
+      if (index === currentIndex) {
+        button.classList.add("active");
+      }
+
+      if (item.type === "video") {
+        const videoIcon = document.createElement("span");
+        videoIcon.className = "ar-gallery-video-thumbnail";
+        videoIcon.textContent = "▶";
+        button.appendChild(videoIcon);
+      } else {
+        const image = document.createElement("img");
+        image.src = item.url;
+        image.alt = item.title || "Project thumbnail";
+        button.appendChild(image);
+      }
+
+      button.addEventListener("click", function () {
+        currentIndex = index;
+        renderCurrentItem();
+      });
+
+      thumbnails.appendChild(button);
+    });
+  }
+
+
+  function renderCurrentItem() {
+    if (!mediaItems.length) {
+      return;
+    }
+
+    const item = mediaItems[currentIndex];
+
+    createMainMedia(item);
+    createThumbnails();
+
+    counter.textContent =
+      (currentIndex + 1) +
+      " of " +
+      mediaItems.length +
+      (item.title ? " — " + item.title : "");
+  }
+
+
+  function openGallery(button) {
+    const galleryId = button.dataset.galleryId;
+    const dataElement = document.getElementById(galleryId);
+
+    if (!dataElement) {
+      return;
+    }
+
+    try {
+      mediaItems = JSON.parse(dataElement.textContent);
+    } catch (error) {
+      console.error("Unable to load project gallery.", error);
+      return;
+    }
+
+    if (!mediaItems.length) {
+      return;
+    }
+
+    currentIndex = 0;
+
+    titleElement.textContent =
+      button.dataset.projectTitle || "Project Gallery";
+
+    descriptionElement.textContent =
+      button.dataset.projectDescription || "";
+
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("ar-gallery-open");
+
+    renderCurrentItem();
+  }
+
+
+  function closeGallery() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("ar-gallery-open");
+
+    stage.innerHTML = "";
+    thumbnails.innerHTML = "";
+    mediaItems = [];
+  }
+
+
+  document.querySelectorAll(".ar-open-gallery").forEach(
+    function (button) {
+      button.addEventListener("click", function () {
+        openGallery(button);
+      });
+    }
+  );
+
+
+  previousButton.addEventListener("click", function () {
+    if (!mediaItems.length) {
+      return;
+    }
+
+    currentIndex =
+      (currentIndex - 1 + mediaItems.length) %
+      mediaItems.length;
+
+    renderCurrentItem();
+  });
+
+
+  nextButton.addEventListener("click", function () {
+    if (!mediaItems.length) {
+      return;
+    }
+
+    currentIndex =
+      (currentIndex + 1) %
+      mediaItems.length;
+
+    renderCurrentItem();
+  });
+
+
+  closeButton.addEventListener("click", closeGallery);
+  backdrop.addEventListener("click", closeGallery);
+
+
+  document.addEventListener("keydown", function (event) {
+    if (!lightbox.classList.contains("is-open")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeGallery();
+    }
+
+    if (event.key === "ArrowLeft") {
+      previousButton.click();
+    }
+
+    if (event.key === "ArrowRight") {
+      nextButton.click();
+    }
+  });
+});
+</script>
 {% endblock %}

@@ -1,0 +1,119 @@
+<article
+  class="ar-showcase-card {% if project.is_featured %}featured{% endif %}"
+>
+
+  <div class="ar-showcase-cover">
+
+    {% with cover=project.cover_media %}
+      {% if cover and cover.image %}
+      <img
+        src="{{ cover.image.url }}"
+        alt="{{ project.title }}"
+        loading="lazy"
+      >
+      {% elif project.image_url %}
+      <img
+        src="{{ project.image_url }}"
+        alt="{{ project.title }}"
+        loading="lazy"
+      >
+      {% else %}
+      <div class="ar-showcase-placeholder">
+        <span>AR</span>
+        <small>{{ project.get_category_display }}</small>
+      </div>
+      {% endif %}
+    {% endwith %}
+
+    {% if project.is_featured %}
+    <span class="ar-featured-project-label">
+      Featured
+    </span>
+    {% endif %}
+
+  </div>
+
+
+  <div class="ar-showcase-card-content">
+
+    <div class="ar-showcase-card-meta">
+      <span class="ar-showcase-label">
+        {{ project.get_status_display }}
+      </span>
+
+      <span>
+        {{ project.get_category_display }}
+      </span>
+    </div>
+
+    <h4>{{ project.title }}</h4>
+
+    <p>{{ project.short_description }}</p>
+
+    {% if project.client_name %}
+    <small class="ar-showcase-client">
+      Client: {{ project.client_name }}
+    </small>
+    {% endif %}
+
+
+    <div class="ar-project-media-summary">
+      {% with media=project.active_media_items %}
+
+        <span>
+          {{ media|length }}
+          Media Item{{ media|length|pluralize }}
+        </span>
+
+      {% endwith %}
+    </div>
+
+
+    <div class="ar-showcase-card-actions">
+
+      {% if project.active_media_items %}
+      <button
+        type="button"
+        class="ar-outline-button ar-open-gallery"
+        data-project-title="{{ project.title|escape }}"
+        data-project-description="{{ project.short_description|escape }}"
+        data-gallery-id="gallery-data-{{ project.id }}"
+      >
+        View Showcase
+      </button>
+      {% endif %}
+
+      {% if project.project_url %}
+      <a
+        class="ar-primary-button"
+        href="{{ project.project_url }}"
+        target="_blank"
+        rel="noopener"
+      >
+        View Project <span>→</span>
+      </a>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+
+  {% if project.active_media_items %}
+  <script
+    type="application/json"
+    id="gallery-data-{{ project.id }}"
+  >
+    [
+      {% for media in project.active_media_items %}
+      {
+        "type": "{{ media.media_type|escapejs }}",
+        "title": "{{ media.title|default:project.title|escapejs }}",
+        "url": "{{ media.media_url|escapejs }}"
+      }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  </script>
+  {% endif %}
+
+</article>

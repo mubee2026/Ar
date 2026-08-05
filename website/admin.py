@@ -1,10 +1,12 @@
 from django.contrib import admin
+
 from .models import (
-    Product,
-    PricingPlan,
-    DemoRequest,
-    ContactEnquiry,
     CompanySettings,
+    ContactEnquiry,
+    DemoRequest,
+    PricingPlan,
+    Product,
+    ProjectMedia,
     ProjectShowcase,
 )
 @admin.register(Product)
@@ -62,13 +64,28 @@ class CompanySettingsAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+class ProjectMediaInline(admin.StackedInline):
+    model = ProjectMedia
+    extra = 1
+
+    fields = (
+        "title",
+        "media_type",
+        "image",
+        "video",
+        "is_cover",
+        "is_active",
+        "sort_order",
+    )
+
+
 @admin.register(ProjectShowcase)
 class ProjectShowcaseAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "category",
         "status",
-        "client_name",
+        "media_count",
         "is_featured",
         "is_active",
         "sort_order",
@@ -85,6 +102,7 @@ class ProjectShowcaseAdmin(admin.ModelAdmin):
         "title",
         "client_name",
         "short_description",
+        "full_description",
     )
 
     list_editable = (
@@ -92,4 +110,33 @@ class ProjectShowcaseAdmin(admin.ModelAdmin):
         "is_featured",
         "is_active",
         "sort_order",
+    )
+
+    inlines = [ProjectMediaInline]
+
+    @admin.display(description="Media")
+    def media_count(self, obj):
+        return obj.media_items.count()
+
+
+@admin.register(ProjectMedia)
+class ProjectMediaAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "project",
+        "media_type",
+        "is_cover",
+        "is_active",
+        "sort_order",
+    )
+
+    list_filter = (
+        "media_type",
+        "is_cover",
+        "is_active",
+    )
+
+    search_fields = (
+        "title",
+        "project__title",
     )

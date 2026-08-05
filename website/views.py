@@ -1,10 +1,15 @@
+from django.db.models import Prefetch
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 
 from .forms import ContactEnquiryForm, DemoRequestForm
-from .models import PricingPlan, Product,ProjectShowcase
-
+from .models import (
+    PricingPlan,
+    Product,
+    ProjectMedia,
+    ProjectShowcase,
+)
 
 def home(request):
     return render(request, "website/home.html")
@@ -13,8 +18,24 @@ def home(request):
 def products(request):
     items = Product.objects.filter(is_active=True)
 
-    showcases = ProjectShowcase.objects.filter(
+    active_media = ProjectMedia.objects.filter(
         is_active=True,
+    ).order_by(
+        "sort_order",
+        "id",
+    )
+
+    showcases = (
+        ProjectShowcase.objects
+        .filter(is_active=True)
+        .prefetch_related(
+            Prefetch(
+                "media_items",
+                queryset=active_media,
+                to_attr="active_media_items",
+            )
+        )
+        .order_by("sort_order", "-created_at")
     )
 
     context = {

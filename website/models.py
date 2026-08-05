@@ -1,4 +1,6 @@
+from django.core.exceptions import ValidationError
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class Product(models.Model):
     name = models.CharField(max_length=120)
@@ -179,6 +181,11 @@ class ProjectShowcase(models.Model):
         max_length=300,
     )
 
+    full_description = models.TextField(
+        blank=True,
+        help_text="Optional detailed project description.",
+    )
+
     client_name = models.CharField(
         max_length=160,
         blank=True,
@@ -187,7 +194,7 @@ class ProjectShowcase(models.Model):
 
     image_url = models.URLField(
         blank=True,
-        help_text="Optional public screenshot or image URL.",
+        help_text="Old external image URL. Optional.",
     )
 
     project_url = models.URLField(
@@ -204,7 +211,11 @@ class ProjectShowcase(models.Model):
     is_featured = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     sort_order = models.PositiveIntegerField(default=0)
-    completed_date = models.DateField(blank=True, null=True)
+
+    completed_date = models.DateField(
+        blank=True,
+        null=True,
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -215,3 +226,116 @@ class ProjectShowcase(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def cover_media(self):
+        cover = self.media_items.filter(
+            is_active=True,
+            is_cover=True,
+            media_type="image",
+        ).first()
+
+        if cover:
+            return cover
+
+        return self.media_items.filter(
+            is_active=True,
+            media_type="image",
+        ).first()
+
+
+class ProjectMedia(models.Model):
+    MEDIA_TYPE_CHOICES = [
+        ("image", "Screenshot / Image"),
+        ("video", "Screen Recording / Video"),
+    ]
+
+    project = models.ForeignKey(
+        ProjectShowcase,
+        on_delete=models.CASCADE,
+        related_name="media_items",
+    )
+
+    title = models.CharField(
+        max_length=160,
+        blank=True,
+        help_text="Example: Dashboard, Accounting, Mobile View.",
+    )
+
+    media_type = models.CharField(
+        max_length=10,
+        choices=MEDIA_TYPE_CHOICES,
+        default="image",
+    )
+
+    image = CloudinaryField(
+        "screenshot",
+        resource_type="image",
+        folder="ar_solutions/projects/screenshots",
+        blank=True,
+        null=True,
+    )
+
+    video = CloudinaryField(
+        "screen recording",
+        resource_type="video",
+        folder="ar_solutions/projects/videos",
+        blank=True,
+        null=True,
+    )
+
+    is_cover = models.BooleanField(
+        default=False,
+        help_text="Select one screenshot as the project cover.",
+    )
+
+    is_active = models.BooleanField(default=True)
+    sort_order = models.PositiveIntegerField(default=0)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+        verbose_name = "Project Media"
+        verbose_name_plural = "Project Media"
+
+    def __str__(self):
+        return self.title or f"{self.project.title} media"
+
+    def clean(self):
+        super().clean()
+
+        if self.media_type == "image" and not self.image:
+            raise ValidationError(
+                {"image": "Upload an image for Screenshot / Image."}
+            )
+
+        if self.media_type == "video" and not self.video:
+            raise ValidationError(
+                {"video": "Upload a video for Screen Recording / Video."}
+            )
+
+        if self.is_cover and self.media_type != "image":
+            raise ValidationError(
+                {"is_cover": "Only an image can be used as the cover."}
+            )
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+
+        if self.is_cover:
+            ProjectMedia.objects.filter(
+                project=self.project,
+                is_cover=True,
+            ).exclude(pk=self.pk).update(is_cover=False)
+
+    @property
+    def media_url(self):
+        if self.media_type == "video" and self.video:
+            return self.video.url
+
+        if self.image:
+            return self.image.url
+
+        return ""
